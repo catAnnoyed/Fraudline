@@ -5,6 +5,7 @@ using System;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.Rendering.PostProcessing;
+using TMPro;
 
 public class uiscript : MonoBehaviour
 
@@ -25,39 +26,41 @@ public class uiscript : MonoBehaviour
     public bool stickLeft;
     public bool stickRight;
     public bool stickUp;
+    public TextMeshPro answertext;
 
 
     void Start()
     {
         select = 1;
         answers = new string[] {
-            "Answer1",
-            "Answer2",
-            "Answer3"
+            "Answer for name",
+            "Answer for shoe",
+            "empty",
+            "Answer for time"
         };
 
         answer.SetActive(false);
-        Debug.Log(glassesCamera);
+        //Debug.Log(glassesCamera);
     }
 
     void Update()
     {
-        if (glassesCamera == null)
-        {
-            glassesCamera = GameObject.Find("Left Eye Camera").transform.parent.gameObject;
-        }
-        else
-        {
-            //transform.rotation = 
-            Transform cam = glassesCamera.transform;
-            transform.LookAt(
-                transform.position + cam.rotation * Vector3.forward,
-                cam.rotation * Vector3.up
-            );
-            // Vector3 toCamera = glassesCamera.transform.position - transform.position;
-            // transform.rotation = Quaternion.LookRotation(-Vector3.forward, toCamera);
+        // if (glassesCamera == null)
+        // {
+        //     glassesCamera = GameObject.Find("Left Eye Camera").transform.parent.gameObject;
+        // }
+        // else
+        // {
+        //     // //transform.rotation = 
+        //     Transform cam = glassesCamera.transform;
+        //     transform.LookAt(
+        //         transform.position + cam.rotation * Vector3.forward,
+        //         cam.rotation * Vector3.up
+        //     );
+        //     // Vector3 toCamera = glassesCamera.transform.position - transform.position;
+        //     // transform.rotation = Quaternion.LookRotation(-Vector3.forward, toCamera);
 
-        }
+        // }
         Vector2 stick = TiltFive.Input.GetStickTilt();
         stickRight = stick.x > 0.5f && lastStick.x <= 0.5f;
         stickLeft  = stick.x < -0.5f && lastStick.x >= -0.5f;
@@ -96,13 +99,13 @@ public class uiscript : MonoBehaviour
                 break;
         }
         
-        if (TiltFive.Input.GetTrigger() > 0.5f && !held)
+        if ((TiltFive.Input.GetTrigger() > 0.5f || UnityEngine.Input.GetKeyDown(KeyCode.Space))&& !held)
         {
             Debug.Log("Trigger pressed down!");
             held = true;
         }
 
-        if ((TiltFive.Input.GetTrigger() < 0.5f || UnityEngine.Input.GetKeyDown(KeyCode.Space)) && held)
+        if ((TiltFive.Input.GetTrigger() < 0.5f || UnityEngine.Input.GetKeyUp(KeyCode.Space)) && held)
         {
             if (!answer.activeSelf)
             {
@@ -113,7 +116,7 @@ public class uiscript : MonoBehaviour
                 else
                 {
                     answer.SetActive(true);
-                    //Text = answers[select];
+                    answertext.text = answers[select];
                     foreach (GameObject button in buttons)
                         button.SetActive(false);
                 }
