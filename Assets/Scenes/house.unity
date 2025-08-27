@@ -2953,6 +2953,7 @@ GameObject:
   - component: {fileID: 845723752}
   - component: {fileID: 845723753}
   - component: {fileID: 845723754}
+  - component: {fileID: 845723755}
   m_Layer: 3
   m_Name: Sphere
   m_TagString: Untagged
@@ -3022,7 +3023,7 @@ Transform:
   m_GameObject: {fileID: 845723744}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.745, y: 0.68, z: -0.28}
+  m_LocalPosition: {x: 2.745, y: 3.328, z: -0.28}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -3035,7 +3036,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 845723744}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd8a707a844b26745acb1daa4f53f06a, type: 3}
   m_Name: 
@@ -3203,6 +3204,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ui: {fileID: 766115089}
+--- !u!114 &845723755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845723744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3d12b2385843a04cb80fc57796d673f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickedItem: {fileID: 0}
+  audiosource: {fileID: 845723753}
+  inventorylist: {fileID: 103660297}
+  rayDistance: 5
 --- !u!1 &889011699 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -516098083770646512, guid: 91f24125460cd894298ca7e479ec8472, type: 3}
