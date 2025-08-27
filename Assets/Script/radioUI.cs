@@ -55,8 +55,8 @@ public class radioUI : MonoBehaviour
             else
             {
                 GlobalInventoryManagerScript.Instance.phase = 1;
-                UIText.gameObject.SetActive(false);
-                gameObject.SetActive(false);
+            //     UIText.gameObject.SetActive(false);
+            //     gameObject.SetActive(false);
             }
         }
     }
