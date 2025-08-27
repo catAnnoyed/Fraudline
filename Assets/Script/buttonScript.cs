@@ -15,6 +15,8 @@ public class buttonScript : MonoBehaviour
     public TextMeshPro[] UI;
     public cutScenes cutScenes;
     public ScenePreloader scenePreloader;
+    public float rayDistance = 5f;
+    public LayerMask interactLayer;
 
     void Start()
     {
@@ -30,6 +32,11 @@ public class buttonScript : MonoBehaviour
 
     void Update()
     {
+
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+        Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.red);
+
         if (GlobalInventoryManagerScript.Instance.phase == 2)
         {
             GetComponent<Renderer>().enabled = true;
@@ -38,93 +45,184 @@ public class buttonScript : MonoBehaviour
         {
             //won
         }
-    }
 
-    void OnTriggerStay(Collider other)
-    {
-        Debug.Log("collide");
-        if (other.gameObject.CompareTag("button") && GlobalInventoryManagerScript.Instance.phase == 2)
+
+        if (Physics.Raycast(ray, out hit, rayDistance, interactLayer))
         {
-            for (int i = 0; i < 3; i++)
+            GameObject other = hit.collider.gameObject;
+            if (other.gameObject.CompareTag("button") && GlobalInventoryManagerScript.Instance.phase == 2)
             {
-                if (other.gameObject.name == buttons[i].name && !opened[i])
+                for (int i = 0; i < 3; i++)
                 {
-                    UI[i].gameObject.SetActive(true);
-                }
-                if (TiltFive.Input.GetTrigger() > 0.5f || UnityEngine.Input.GetKeyDown(KeyCode.E))
-                {
-                    Debug.Log("key pressed");
-                    Debug.Log(other.gameObject);
-
+                    if (other.gameObject.name == buttons[i].name && !opened[i])
                     {
-                        Debug.Log(i);
-                        if (other.gameObject.name == buttons[i].name)
+                        UI[i].gameObject.SetActive(true);
+                    }
+
+                    if (TiltFive.Input.GetTrigger() > 0.5f || UnityEngine.Input.GetKeyDown(KeyCode.E))
+                    {
+                        Debug.Log("key pressed");
+                        Debug.Log(other.gameObject);
+
                         {
-                            Debug.Log("compare sucessful");
                             Debug.Log(i);
-                            if (!opened[i])
+                            if (other.gameObject.name == buttons[i].name)
                             {
-                                Debug.Log(buttons[i].name, doors[i]);
-                                Rigidbody rb = doors[i].GetComponent<Rigidbody>();
-                                if (rb != null) rb.isKinematic = true;
+                                Debug.Log("compare sucessful");
+                                Debug.Log(i);
+                                if (!opened[i])
                                 {
-                                    doors[i].transform.DOMove(doors[i].transform.position + Vector3.right * 3f, 1f);
-                                    opened[i] = true;
-                                    cutScene(i);
+                                    Debug.Log(buttons[i].name, doors[i]);
+                                    Rigidbody rb = doors[i].GetComponent<Rigidbody>();
+                                    if (rb != null) rb.isKinematic = true;
+                                    {
+                                        doors[i].transform.DOMove(doors[i].transform.position + Vector3.right * 3f, 1f);
+                                        opened[i] = true;
+                                        cutScene(i);
+                                    }
                                 }
                             }
                         }
                     }
                 }
+                Debug.Log("can compare button and phase");
             }
-            Debug.Log("can compare button and phase");
-        }
+    
 
-        //dialog
-        if (other.gameObject.name == "prisoner1" && GlobalInventoryManagerScript.Instance.phase == 2) //scammer
-        {
 
-            Debug.Log("colliding with 1");
-            if (TiltFive.Input.GetTrigger() > 0.5f || UnityEngine.Input.GetKeyDown(KeyCode.E))
+            Debug.Log(other.gameObject.name);
+            //dialog
+            if (other.gameObject.name == "prisoner1" && GlobalInventoryManagerScript.Instance.phase == 2) //scammer
             {
 
-                Debug.Log("Scene dialog1 supposed to load");
-                // scenePreloader.ActivateScene("dialog1");
-                SceneManager.LoadScene("dialog1");
+                Debug.Log("colliding with 1");
+                if (TiltFive.Input.GetTrigger() > 0.5f || UnityEngine.Input.GetKeyDown(KeyCode.E))
+                {
+
+                    Debug.Log("Scene dialog1 supposed to load");
+                    // scenePreloader.ActivateScene("dialog1");
+                    SceneManager.LoadScene("dialog1");
+                }
             }
-        }
-        else if (other.gameObject.name == "prisoner2" && GlobalInventoryManagerScript.Instance.phase == 2)
-        {
-            if (TiltFive.Input.GetTrigger() > 0.5f || UnityEngine.Input.GetKeyDown(KeyCode.E))
+            else if (other.gameObject.name == "prisoner2" && GlobalInventoryManagerScript.Instance.phase == 2)
             {
-                //scenePreloader.ActivateScene("dialog2");
-                SceneManager.LoadScene("dialog2");
+                Debug.Log("colliding with 2");
+                if (TiltFive.Input.GetTrigger() > 0.5f || UnityEngine.Input.GetKeyDown(KeyCode.E))
+                {
+                    //scenePreloader.ActivateScene("dialog2");
+                    Debug.Log("pressed");
+                    SceneManager.LoadScene("dialog2");
+                }
             }
-        }
-        else if (other.gameObject.name == "prisoner3" && GlobalInventoryManagerScript.Instance.phase == 2)
-        {
-            if (TiltFive.Input.GetTrigger() > 0.5f || UnityEngine.Input.GetKeyDown(KeyCode.E))
+            else if (other.gameObject.name == "Nolan" && GlobalInventoryManagerScript.Instance.phase == 2)
             {
-                // scenePreloader.ActivateScene("dialog3");
-                SceneManager.LoadScene("dialog3");
+                Debug.Log("colliding with 3");
+                if (TiltFive.Input.GetTrigger() > 0.5f || UnityEngine.Input.GetKeyDown(KeyCode.E))
+                {
+                    // scenePreloader.ActivateScene("dialog3");
+                    SceneManager.LoadScene("dialog3");
+                }
+            }
+            else
+            {
+                //Debug.Log("ghost");
             }
         }
         else
-        {
-            Debug.Log("ghost");
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("button"))
         {
             for (int i = 0; i < 3; i++)
             {
                 UI[i].gameObject.SetActive(false);
             }
         }
+
     }
+
+    // void OnTriggerStay(Collider other)
+    // {
+    //     Debug.Log("collide");
+    //     if (other.gameObject.CompareTag("button") && GlobalInventoryManagerScript.Instance.phase == 2)
+    //     {
+    //         for (int i = 0; i < 3; i++)
+    //         {
+    //             if (other.gameObject.name == buttons[i].name && !opened[i])
+    //             {
+    //                 UI[i].gameObject.SetActive(true);
+    //             }
+    //             if (TiltFive.Input.GetTrigger() > 0.5f || UnityEngine.Input.GetKeyDown(KeyCode.E))
+    //             {
+    //                 Debug.Log("key pressed");
+    //                 Debug.Log(other.gameObject);
+
+    //                 {
+    //                     Debug.Log(i);
+    //                     if (other.gameObject.name == buttons[i].name)
+    //                     {
+    //                         Debug.Log("compare sucessful");
+    //                         Debug.Log(i);
+    //                         if (!opened[i])
+    //                         {
+    //                             Debug.Log(buttons[i].name, doors[i]);
+    //                             Rigidbody rb = doors[i].GetComponent<Rigidbody>();
+    //                             if (rb != null) rb.isKinematic = true;
+    //                             {
+    //                                 doors[i].transform.DOMove(doors[i].transform.position + Vector3.right * 3f, 1f);
+    //                                 opened[i] = true;
+    //                                 cutScene(i);
+    //                             }
+    //                         }
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //         Debug.Log("can compare button and phase");
+    //     }
+
+    //     //dialog
+    //     if (other.gameObject.name == "prisoner1" && GlobalInventoryManagerScript.Instance.phase == 2) //scammer
+    //     {
+
+    //         Debug.Log("colliding with 1");
+    //         if (TiltFive.Input.GetTrigger() > 0.5f || UnityEngine.Input.GetKeyDown(KeyCode.E))
+    //         {
+
+    //             Debug.Log("Scene dialog1 supposed to load");
+    //             // scenePreloader.ActivateScene("dialog1");
+    //             SceneManager.LoadScene("dialog1");
+    //         }
+    //     }
+    //     else if (other.gameObject.name == "prisoner2" && GlobalInventoryManagerScript.Instance.phase == 2)
+    //     {
+    //         if (TiltFive.Input.GetTrigger() > 0.5f || UnityEngine.Input.GetKeyDown(KeyCode.E))
+    //         {
+    //             //scenePreloader.ActivateScene("dialog2");
+    //             SceneManager.LoadScene("dialog2");
+    //         }
+    //     }
+    //     else if (other.gameObject.name == "prisoner3" && GlobalInventoryManagerScript.Instance.phase == 2)
+    //     {
+    //         if (TiltFive.Input.GetTrigger() > 0.5f || UnityEngine.Input.GetKeyDown(KeyCode.E))
+    //         {
+    //             // scenePreloader.ActivateScene("dialog3");
+    //             SceneManager.LoadScene("dialog3");
+    //         }
+    //     }
+    //     else
+    //     {
+    //         Debug.Log("ghost");
+    //     }
+    // }
+
+    // void OnTriggerExit(Collider other)
+    // {
+    //     if (other.gameObject.CompareTag("button"))
+    //     {
+    //         for (int i = 0; i < 3; i++)
+    //         {
+    //             UI[i].gameObject.SetActive(false);
+    //         }
+    //     }
+    // }
 
     void cutScene(int num)// scammer
     {

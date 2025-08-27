@@ -20,6 +20,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/dialog1.unity
     guid: 68e6c625b12c10d4199984d342166fff
+  - enabled: 1
+    path: Assets/Scenes/dialog2.unity
+    guid: 617582715ab87274f85e406d5e69aa74
+  - enabled: 1
+    path: Assets/Scenes/dialog3.unity
+    guid: 26d111096447df74ba5700c508a94651
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

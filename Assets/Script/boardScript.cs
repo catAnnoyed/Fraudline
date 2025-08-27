@@ -56,6 +56,7 @@ public class boardScript : MonoBehaviour
         {
             player.SetActive(true);
             arrow.SetActive(true);
+            callUI.SetActive(false);
             Scale = new UnityEngine.Vector3(0.8f, 0.8f, 0.8f);
             transform.DOScale(Scale, 0.8f);
             gameObject.transform.position = new UnityEngine.Vector3(player.transform.position.x,-0.01f, player.transform.position.z);
