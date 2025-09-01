@@ -9,6 +9,7 @@ public class RaycastpickItem : MonoBehaviour
     public GameObject pickedItem;
     public AudioSource audiosource;
     public inventoryHouseIM inventorylist;
+    public GameObject target;
 
     // Maximum ray distance
     public float rayDistance = 5f;
@@ -37,7 +38,7 @@ public class RaycastpickItem : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, rayDistance))
         {
-            GameObject target = hit.collider.gameObject;
+            target = hit.collider.gameObject;
 
             // If the ray hits a pickable item
             if (pickedItem == null)
@@ -63,24 +64,19 @@ public class RaycastpickItem : MonoBehaviour
                 if (TiltFive.Input.GetTrigger() <= 0.5f && !UnityEngine.Input.GetKey(KeyCode.F))
                 {
                     // Un-parent the object when released
-                pickedItem.GetComponent<Rigidbody>().isKinematic = false;
+                    pickedItem.GetComponent<Rigidbody>().isKinematic = false;
                     pickedItem.transform.SetParent(null);
                     pickedItem = null;
                 }
             }
 
             // If the ray hits evidence
-            if (target.CompareTag("evidence"))
+            if (hit.collider.gameObject.CompareTag("evidence"))
             {
                 if (Physics.Raycast(ray, out hit, rayDistance))
                 {
                     line.startColor = Color.green;
                     line.endColor = Color.green;
-                }
-                else
-                {
-                    line.startColor = Color.red;
-                    line.endColor = Color.red;
                 }
                 if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.Y) || UnityEngine.Input.GetKeyDown(KeyCode.F))
                 {
@@ -96,6 +92,12 @@ public class RaycastpickItem : MonoBehaviour
                     }
                 }
             }
+            else
+            {
+                line.startColor = Color.red;
+                line.endColor = Color.red;
+            }
         }
+        
     }
 }
