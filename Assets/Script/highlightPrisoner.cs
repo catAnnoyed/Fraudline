@@ -22,7 +22,7 @@ public class highlightPrisoner : MonoBehaviour
         {
             Material mat = renderers[j].material;
             mat.EnableKeyword("_EMISSION");
-            mat.SetColor("_EmissionColor", Color.white * 0.05f);
+            mat.SetColor("_EmissionColor", Color.white * 0.055f);
         }
 
     }
