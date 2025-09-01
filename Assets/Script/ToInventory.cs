@@ -14,9 +14,12 @@ public class toInventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (UnityEngine.Input.GetKeyDown(KeyCode.I)||TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.X))
+        if (GlobalInventoryManagerScript.Instance.phase == 2)
         {
-            SceneManager.LoadScene("inventory");
+            if (UnityEngine.Input.GetKeyDown(KeyCode.I) || TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.X))
+            {
+                SceneManager.LoadScene("inventory");
+            }
         }
     }
 }

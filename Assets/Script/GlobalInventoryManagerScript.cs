@@ -20,12 +20,17 @@ public class GlobalInventoryManagerScript : MonoBehaviour
     void Start()
     {
         itemStatus = new bool[itemNum];
-        opened = new bool[itemNum];
+        opened = new bool[3];
         phase = 0;
 
         for (int i = 0; i < itemNum; i++)
         {
             itemStatus[i] = false;
+        }
+
+        for (int i = 0; i < 3; i++)
+        {
+            opened[i] = false;
         }
 
     }

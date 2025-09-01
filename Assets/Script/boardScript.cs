@@ -55,7 +55,7 @@ public class boardScript : MonoBehaviour
         if (GlobalInventoryManagerScript.Instance.phase == 2)
         {
             player.SetActive(true);
-            arrow.SetActive(true);
+            //arrow.SetActive(true);
             callUI.SetActive(false);
             Scale = new UnityEngine.Vector3(0.8f, 0.8f, 0.8f);
             transform.DOScale(Scale, 0.8f);
