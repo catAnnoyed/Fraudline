@@ -4,10 +4,15 @@ using StarterAssets;
 
 public class freeze : MonoBehaviour
 {
+    public static int visit = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        StartCoroutine(pause());
+        if (visit == 0)
+        {
+            StartCoroutine(pause());
+        }
+        
     }
 
     // Update is called once per frame
@@ -16,5 +21,6 @@ public class freeze : MonoBehaviour
         GetComponent<ThirdPersonController>().enabled = false;
         yield return new WaitForSeconds(5f);
         GetComponent<ThirdPersonController>().enabled = true;
+        visit = 1;
     }
 }

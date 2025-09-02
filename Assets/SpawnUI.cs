@@ -9,7 +9,11 @@ public class SpawnUI : MonoBehaviour
     void Start()
     {
         ui = GameObject.Find("CanvasUI");
-        StartCoroutine(changetext());
+        if (freeze.visit == 0)
+        {
+            StartCoroutine(changetext());
+        }
+        
     }
     IEnumerator changetext()
     {

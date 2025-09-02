@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using JetBrains.Annotations;
 using System.Collections;
+using TiltFive;
 
 [RequireComponent(typeof(LineRenderer))]
 
@@ -122,7 +123,7 @@ public class ItemDescription : MonoBehaviour
                 }
                 else if (target == diary)
                 {
-                    description.GetComponent<TextMeshPro>().text = "James's Diary";
+                    description.GetComponent<TextMeshPro>().text = "James's social engineering book";
                 }
                 else if (target == shoe)
                 {

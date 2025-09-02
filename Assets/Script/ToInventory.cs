@@ -5,6 +5,7 @@ using TiltFive;
 
 public class toInventory : MonoBehaviour
 {
+    public static string currentscene;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,6 +19,7 @@ public class toInventory : MonoBehaviour
         {
             if (UnityEngine.Input.GetKeyDown(KeyCode.I) || TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.X))
             {
+                currentscene = SceneManager.GetActiveScene().name;
                 SceneManager.LoadScene("inventory");
             }
         }

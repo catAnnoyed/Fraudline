@@ -8,6 +8,8 @@ TagManager:
   - pickable
   - evidence
   - button
+  - back
+  - chosen
   layers:
   - Default
   - TransparentFX

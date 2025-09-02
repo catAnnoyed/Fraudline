@@ -17,7 +17,7 @@ public class safe_show_ui : MonoBehaviour
     public lockswitch lockscript;
     public GameObject USB;
     public AudioSource audiosource;
-    private bool opened = false; 
+    public static bool opened = false; 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
