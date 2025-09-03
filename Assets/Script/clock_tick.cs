@@ -10,6 +10,10 @@ public class CustomClockTMP : MonoBehaviour
     public int minutes;
     public float seconds;
     public bool alarmtriggered = false;
+    void Start()
+    {
+        
+    }
     void Update()
     {
         // if (!alarmtriggered)

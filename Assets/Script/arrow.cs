@@ -25,5 +25,9 @@ public class arrow : MonoBehaviour
         lookRotation *= Quaternion.Euler(rotationOffset);
 
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
+
+        if (GlobalItemComplete.allItemsCollected) {
+            gameObject.SetActive(false);
+        }
     }
 }

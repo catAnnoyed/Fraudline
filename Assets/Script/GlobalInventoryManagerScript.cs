@@ -16,12 +16,14 @@ public class GlobalInventoryManagerScript : MonoBehaviour
     public string test = "Hey";
     public int phase;
     public Boolean[] opened;
+    public bool firstTime;
 
     void Start()
     {
         itemStatus = new bool[itemNum];
         opened = new bool[3];
         phase = 0;
+        firstTime = true;
 
         for (int i = 0; i < itemNum; i++)
         {
@@ -61,7 +63,7 @@ public class GlobalInventoryManagerScript : MonoBehaviour
         //     addToInventory(1);
         // }
 
-        if (!alarmtriggered)
+        if (!alarmtriggered && firstTime == false)
         {
             Debug.Log("not yet triggered");
             if (hours < 7)

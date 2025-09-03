@@ -8,9 +8,12 @@ public class freeze : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (visit == 0)
+        if (GlobalInventoryManagerScript.Instance.firstTime)
         {
-            StartCoroutine(pause());
+            if (visit == 0)
+            {
+                StartCoroutine(pause());
+            }
         }
         
     }
@@ -22,5 +25,6 @@ public class freeze : MonoBehaviour
         yield return new WaitForSeconds(5f);
         GetComponent<ThirdPersonController>().enabled = true;
         visit = 1;
+        GlobalInventoryManagerScript.Instance.firstTime = false;
     }
 }

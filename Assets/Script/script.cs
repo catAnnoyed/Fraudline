@@ -22,17 +22,10 @@ public class script : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Player is near the door");
-            if (GlobalItemComplete.allItemsCollected)
+            doorui.GetComponent<TextMeshPro>().text = "Press A to enter the jail cell";
+            if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.A) || UnityEngine.Input.GetKeyDown(KeyCode.E))
             {
-                doorui.GetComponent<TextMeshPro>().text = "Press A to enter the jail cell";
-                if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.A) || UnityEngine.Input.GetKeyDown(KeyCode.E))
-                {
-                    SceneManager.LoadScene("police");
-                }
-            }
-            else
-            {
-                doorui.GetComponent<TextMeshPro>().text = "You need to collect all the item first";
+                SceneManager.LoadScene("police");
             }
         }
     }

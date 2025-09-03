@@ -31,8 +31,8 @@ public class cutsceneUI : MonoBehaviour
         else if (GlobalInventoryManagerScript.Instance.phase == 2)
         {
             UIText.text = "Press A to vist scammer's house";
-            transform.position = door.transform.position + new UnityEngine.Vector3(0, 2.5f, 0f);
-            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+            transform.position = door.transform.position + new UnityEngine.Vector3(0, 2f, 0f);
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
         else
         {

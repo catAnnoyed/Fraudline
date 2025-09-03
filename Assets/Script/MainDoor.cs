@@ -6,9 +6,14 @@ public class MainDoor : MonoBehaviour
 {
     public ScenePreloader scenePreloader;
     public GameObject UI;
+    public AudioSource soundEffect;
     void Start()
     {
-        scenePreloader.PreloadScene("house");
+        //cenePreloader.PreloadScene("house");
+        if (GlobalInventoryManagerScript.Instance.phase == 2)
+        {
+            soundEffect.Play();
+        }
     }
 
     void Update()
@@ -27,6 +32,7 @@ public class MainDoor : MonoBehaviour
             if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.A) || UnityEngine.Input.GetKeyDown(KeyCode.E))
             {
                 // animation?
+                soundEffect.Play();
                 Debug.Log("Should be changing scene");
                 SceneManager.LoadScene("house");
                 //scenePreloader.ActivateScene("house");
