@@ -1,6 +1,9 @@
 using UnityEngine;
-using TMPro;    
+using TMPro;
 using TiltFive;
+using UnityEngine.Playables;
+using System.Globalization;
+using UnityEditor.Callbacks;
 
 public class radioUI : MonoBehaviour
 {
@@ -8,6 +11,8 @@ public class radioUI : MonoBehaviour
     public GameObject phone;
     private int i = 0;
     private string[] dialog;
+    public phoencutscene cutscene;
+ 
 
     void Start()
     {
@@ -44,7 +49,8 @@ public class radioUI : MonoBehaviour
 
     void Update()
     {
-        if (UnityEngine.Input.GetKeyDown(KeyCode.Space) || TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.A))
+        
+        if ((UnityEngine.Input.GetKeyDown(KeyCode.Space) || TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.A)) && cutscene.num == 1)
         {
             if (i < dialog.Length - 1)
             {
@@ -54,10 +60,14 @@ public class radioUI : MonoBehaviour
             }
             else
             {
-                GlobalInventoryManagerScript.Instance.phase = 1;
-            //     UIText.gameObject.SetActive(false);
-            //     gameObject.SetActive(false);
+                cutscene.num = 2;
+                cutscene.End();
+                
+                //     UIText.gameObject.SetActive(false);
+                //     gameObject.SetActive(false);
             }
         }
     }
+
+
 }

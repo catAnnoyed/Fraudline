@@ -6,6 +6,7 @@ using System.Numerics;
 using Unity.VisualScripting;
 using TiltFive;
 using UnityEditor.Animations;
+using TMPro;
 
 public class boardScript : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class boardScript : MonoBehaviour
     public GameObject callUI;
     public GameObject doorUI;
     public GameObject arrow;
+    public TextMeshPro dialogUI;
 
     void Start()
     {
@@ -36,7 +38,7 @@ public class boardScript : MonoBehaviour
             {
                 if ((UnityEngine.Input.GetKeyDown(KeyCode.Space) || TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.A)) && !isMoving)
                 {
-                    callUI.SetActive(false);
+                    //callUI.SetActive(false);
                     MoveJail();
                 }
             }
@@ -46,10 +48,10 @@ public class boardScript : MonoBehaviour
                 {
                     GlobalInventoryManagerScript.Instance.phase = 2;
                     doorUI.SetActive(false);
-                    
+
                 }
             }
-            
+
         }
 
         if (GlobalInventoryManagerScript.Instance.phase == 2)
@@ -59,10 +61,12 @@ public class boardScript : MonoBehaviour
             callUI.SetActive(false);
             Scale = new UnityEngine.Vector3(0.8f, 0.8f, 0.8f);
             transform.DOScale(Scale, 0.8f);
-            gameObject.transform.position = new UnityEngine.Vector3(player.transform.position.x,-0.01f, player.transform.position.z);
+            gameObject.transform.position = new UnityEngine.Vector3(player.transform.position.x, -0.01f, player.transform.position.z);
 
 
         }
+
+        dialogUI.transform.position = transform.position + new UnityEngine.Vector3(0, 6f, 0);
     }
 
     void MoveJail()

@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 
 public class cutsceneUI : MonoBehaviour
 {
@@ -17,23 +18,25 @@ public class cutsceneUI : MonoBehaviour
     void Update()
     {
 
-        if (GlobalInventoryManagerScript.Instance.phase == 0)
+        if (GlobalInventoryManagerScript.Instance.phase == 0 && radioUI.activeSelf)
         {
             UIText.text = "Press A to continue";
             transform.position = board.transform.position + new UnityEngine.Vector3(0, 2f, -1.5f);
         }
-
-        if (GlobalInventoryManagerScript.Instance.phase == 1 && !radioUI.activeSelf)
+        else if (GlobalInventoryManagerScript.Instance.phase == 1 && !radioUI.activeSelf)
         {
             UIText.text = "Press A to continue";
             transform.position = board.transform.position + new UnityEngine.Vector3(0, 2.5f, -2f);
         }
-
-        if (GlobalInventoryManagerScript.Instance.phase == 2)
+        else if (GlobalInventoryManagerScript.Instance.phase == 2)
         {
             UIText.text = "Press A to vist scammer's house";
             transform.position = door.transform.position + new UnityEngine.Vector3(0, 2.5f, 0f);
             transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+        }
+        else
+        {
+            UIText.text = "";
         }
     }
     

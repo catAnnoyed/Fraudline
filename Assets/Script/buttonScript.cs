@@ -14,6 +14,7 @@ public class buttonScript : MonoBehaviour
     public GameObject[] doors;
     public bool[] opened;
     public TextMeshPro[] UI;
+    public TextMeshPro dialogUI;
     public ScenePreloader scenePreloader;
     public float rayDistance = 5f;
     private LineRenderer line;
@@ -21,6 +22,7 @@ public class buttonScript : MonoBehaviour
     public LayerMask interactLayer;
     public cutscenetimeline cutscene;
     public highlightPrisoner hightlightPrisoners;
+    public TextMeshPro weaponsUI;
 
 
     void Start()
@@ -31,6 +33,8 @@ public class buttonScript : MonoBehaviour
         {
             UI[i].gameObject.SetActive(false);
         }
+        dialogUI.gameObject.SetActive(false);
+        weaponsUI.gameObject.SetActive(false);
 
 
         line = GetComponent<LineRenderer>();
@@ -68,12 +72,22 @@ public class buttonScript : MonoBehaviour
             {
                 for (int i = 0; i < 3; i++)
                 {
+
+                    if (!GlobalItemComplete.allItemsCollected)
+                    {
+                        UI[i].text = "Collect all evidence first";
+                    }
+                    else
+                    {
+                        UI[i].text = "Press trigger to release suspect";
+                    }
+
                     if (other.gameObject.name == buttons[i].name && !GlobalInventoryManagerScript.Instance.opened[i])
                     {
                         UI[i].gameObject.SetActive(true);
                     }
 
-                    if (TiltFive.Input.GetTrigger() > 0.5f || UnityEngine.Input.GetKeyDown(KeyCode.E))
+                    if ((TiltFive.Input.GetTrigger() > 0.5f || UnityEngine.Input.GetKeyDown(KeyCode.E)) && GlobalItemComplete.allItemsCollected)
                     {
                         Debug.Log("key pressed");
                         Debug.Log(other.gameObject);
@@ -111,6 +125,7 @@ public class buttonScript : MonoBehaviour
             {
 
                 hightlightPrisoners.highlight(0);
+                dialogUI.gameObject.SetActive(true);
                 Debug.Log("colliding with 1");
                 if (TiltFive.Input.GetTrigger() > 0.5f || UnityEngine.Input.GetKeyDown(KeyCode.E))
                 {
@@ -122,6 +137,7 @@ public class buttonScript : MonoBehaviour
             else if (other.gameObject.name == "prisoner2" && GlobalInventoryManagerScript.Instance.phase == 2)
             {
                 hightlightPrisoners.highlight(1);
+                dialogUI.gameObject.SetActive(true);
                 Debug.Log("colliding with 2");
                 if (TiltFive.Input.GetTrigger() > 0.5f || UnityEngine.Input.GetKeyDown(KeyCode.E))
                 {
@@ -132,6 +148,7 @@ public class buttonScript : MonoBehaviour
             else if (other.gameObject.name == "prisoner3" && GlobalInventoryManagerScript.Instance.phase == 2)
             {
                 hightlightPrisoners.highlight(2);
+                dialogUI.gameObject.SetActive(true);
                 Debug.Log("colliding with 3");
                 if (TiltFive.Input.GetTrigger() > 0.5f || UnityEngine.Input.GetKeyDown(KeyCode.E))
                 {
@@ -141,8 +158,20 @@ public class buttonScript : MonoBehaviour
             else
             {
                 hightlightPrisoners.dontHighlight();
+                dialogUI.gameObject.SetActive(false);
                 //Debug.Log("ghost");
             }
+
+
+            if (other.gameObject.CompareTag("weapons") && GlobalInventoryManagerScript.Instance.phase == 2)
+            {
+                weaponsUI.gameObject.SetActive(true);
+            }
+            else
+            {
+                weaponsUI.gameObject.SetActive(false);
+            }
+
         }
         else
         {
@@ -151,6 +180,8 @@ public class buttonScript : MonoBehaviour
                 UI[i].gameObject.SetActive(false);
             }
             hightlightPrisoners.dontHighlight();
+            dialogUI.gameObject.SetActive(false);
+            weaponsUI.gameObject.SetActive(false);
         }
     }
 

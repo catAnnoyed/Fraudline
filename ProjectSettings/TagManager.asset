@@ -10,6 +10,7 @@ TagManager:
   - button
   - back
   - chosen
+  - weapons
   layers:
   - Default
   - TransparentFX

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.Playables;
+using UnityEngine.Video;
 
 public class cutscenetimeline : MonoBehaviour
 
@@ -14,6 +15,7 @@ public class cutscenetimeline : MonoBehaviour
     public PlayableDirector cutScene1;
     public PlayableDirector cutScene2;
     public PlayableDirector cutScene3;
+    public PlayableDirector evidence;
     public GameObject prisoner2;
     public GameObject prisoner3;
     void Start()
@@ -23,7 +25,8 @@ public class cutscenetimeline : MonoBehaviour
             cutScene2.playableGraph.GetRootPlayable(0).SetSpeed(0.8f);
         }
 
-        if (GlobalInventoryManagerScript.Instance.opened[1]) {
+        if (GlobalInventoryManagerScript.Instance.opened[1])
+        {
             prisoner2.SetActive(false);
         }
 
@@ -40,69 +43,76 @@ public class cutscenetimeline : MonoBehaviour
         {
             arrow.SetActive(true);
         }
-    }
-    
-    public void doorOpened(int i)
-        {
-            aim.SetActive(false);
-            playerController.enabled = false;
-            arrow.SetActive(false);
 
-            if (i == 0)
+        evidence.stopped += EvidenceFinish;
+    }
+
+    public void doorOpened(int i)
+    {
+        aim.SetActive(false);
+        playerController.enabled = false;
+        arrow.SetActive(false);
+
+        if (i == 0)
+        {
+            // cutScene1.time = 0; // restart
+            cutScene1.Play();
+            Debug.Log("Timeline started: " + cutScene1.playableAsset.name);
+            cutScene1.stopped += OnCutsceneFinished;
+        }
+        else if (i == 1)
+        {
+            if (cutScene2 != null)
             {
-                // cutScene1.time = 0; // restart
-                cutScene1.Play();
-                Debug.Log("Timeline started: " + cutScene1.playableAsset.name);
-                cutScene1.stopped += OnCutsceneFinished;
+                // cutScene2.time = 0; // restart
+                cutScene2.Play();
+                Debug.Log("Timeline started: " + cutScene2.playableAsset.name);
+                cutScene2.stopped += OnCutsceneFinished;
             }
-            else if (i == 1)
+            else
             {
-                if (cutScene2 != null)
-                {
-                    // cutScene2.time = 0; // restart
-                    cutScene2.Play();
-                    Debug.Log("Timeline started: " + cutScene2.playableAsset.name);
-                    cutScene2.stopped += OnCutsceneFinished;
-                }
-                else
-                {
-                    Debug.LogError("Cutscene2 PlayableDirector is not assigned!");
-                }
-            }
-            else if (i == 2)
-            {
-                cutScene3.Play();
-                Debug.Log("Timeline started: " + cutScene3.playableAsset.name);
-                cutScene3.stopped += OnCutsceneFinished;   
+                Debug.LogError("Cutscene2 PlayableDirector is not assigned!");
             }
         }
-        
-        void OnCutsceneFinished (PlayableDirector director)
+        else if (i == 2)
         {
-            aim.SetActive(true);
-            playerController.enabled = true;
-            arrow.SetActive(true);
+            cutScene3.Play();
+            Debug.Log("Timeline started: " + cutScene3.playableAsset.name);
+            cutScene3.stopped += OnCutsceneFinished;
+        }
+    }
 
-            if (GlobalInventoryManagerScript.Instance.opened[1])
+    void OnCutsceneFinished(PlayableDirector director)
+    {
+        aim.SetActive(true);
+        playerController.enabled = true;
+        arrow.SetActive(true);
+
+        if (GlobalInventoryManagerScript.Instance.opened[1])
         {
             prisoner2.SetActive(false);
         }
 
-            if (GlobalInventoryManagerScript.Instance.opened[2])
-            {
-                prisoner3.SetActive(false);
-            }
-
-            if (GlobalInventoryManagerScript.Instance.opened[0])
-            {
-                // lose scene
-                Debug.Log("lose");
-            }
-            else if (GlobalInventoryManagerScript.Instance.opened[1] && GlobalInventoryManagerScript.Instance.opened[2])
-            {
-                // inventory scene
-                Debug.Log("inventory");
-            }
+        if (GlobalInventoryManagerScript.Instance.opened[2])
+        {
+            prisoner3.SetActive(false);
         }
+
+        if (GlobalInventoryManagerScript.Instance.opened[0])
+        {
+            // lose scene
+            Debug.Log("lose");
+        }
+        else if (GlobalInventoryManagerScript.Instance.opened[1] && GlobalInventoryManagerScript.Instance.opened[2])
+        {
+            evidence.Play();
+        }
+    }
+
+    void EvidenceFinish(PlayableDirector director)
+    {
+        //add evidence chosing scene here
+        Debug.Log("Evidence choosing scene");
+    }
 
 }
