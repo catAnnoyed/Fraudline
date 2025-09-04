@@ -86,9 +86,6 @@ PrefabInstance:
       addedObject: {fileID: 7381644439853125684}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4412c9c10cd39c1498b88be3c8f03ca5, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3122088565082416440}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4412c9c10cd39c1498b88be3c8f03ca5, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 5147521558064000060}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4412c9c10cd39c1498b88be3c8f03ca5, type: 3}
       insertIndex: -1
@@ -249,19 +246,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3122088565082416440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4689922131928765700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b0a80c743b68bb4eba234eca646be23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ui: {fileID: 0}
 --- !u!120 &5147521558064000060
 LineRenderer:
   serializedVersion: 2
@@ -384,7 +368,8 @@ MonoBehaviour:
   pickedItem: {fileID: 0}
   audiosource: {fileID: 7381644439853125684}
   inventorylist: {fileID: 0}
-  rayDistance: 5
+  target: {fileID: 0}
+  rayDistance: 4.42
 --- !u!96 &6934838158048894648
 TrailRenderer:
   serializedVersion: 3

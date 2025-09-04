@@ -12,6 +12,7 @@ public class MainDoor : MonoBehaviour
         //cenePreloader.PreloadScene("house");
         if (GlobalInventoryManagerScript.Instance.phase == 2)
         {
+            soundEffect.time = 1.1f;
             soundEffect.Play();
         }
     }

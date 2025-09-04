@@ -23,6 +23,7 @@ public class buttonScript : MonoBehaviour
     public cutscenetimeline cutscene;
     public highlightPrisoner hightlightPrisoners;
     public TextMeshPro weaponsUI;
+    public GameObject glassesThingy;
 
 
     void Start()
@@ -35,6 +36,7 @@ public class buttonScript : MonoBehaviour
         }
         dialogUI.gameObject.SetActive(false);
         weaponsUI.gameObject.SetActive(false);
+        glassesThingy.SetActive(false);
 
 
         line = GetComponent<LineRenderer>();
@@ -54,9 +56,10 @@ public class buttonScript : MonoBehaviour
 
         if (GlobalInventoryManagerScript.Instance.phase == 2)
         {
-            GetComponent<Renderer>().enabled = true;
+            //GetComponent<Renderer>().enabled = true;
             line.enabled = true;
             trail.enabled = true;
+            glassesThingy.SetActive(true);
         }    
         Ray ray = new Ray(transform.position, transform.forward);
         line.SetPosition(0, ray.origin);
@@ -76,6 +79,7 @@ public class buttonScript : MonoBehaviour
                     if (!GlobalItemComplete.allItemsCollected)
                     {
                         UI[i].text = "Collect all evidence first";
+
                     }
                     else
                     {
@@ -85,6 +89,12 @@ public class buttonScript : MonoBehaviour
                     if (other.gameObject.name == buttons[i].name && !GlobalInventoryManagerScript.Instance.opened[i])
                     {
                         UI[i].gameObject.SetActive(true);
+                        if (GlobalItemComplete.allItemsCollected)
+                        {
+                            line.startColor = Color.green;
+                            line.endColor = Color.green;
+                            line.material.color = Color.green;
+                        }
                     }
 
                     if ((TiltFive.Input.GetTrigger() > 0.5f || UnityEngine.Input.GetKeyDown(KeyCode.E)) && GlobalItemComplete.allItemsCollected)
@@ -124,6 +134,9 @@ public class buttonScript : MonoBehaviour
             if (other.gameObject.name == "prisoner1" && GlobalInventoryManagerScript.Instance.phase == 2) //scammer
             {
 
+                line.startColor = Color.green;
+                line.endColor = Color.green;
+                line.material.color = Color.green;
                 hightlightPrisoners.highlight(0);
                 dialogUI.gameObject.SetActive(true);
                 Debug.Log("colliding with 1");
@@ -136,6 +149,9 @@ public class buttonScript : MonoBehaviour
             }
             else if (other.gameObject.name == "prisoner2" && GlobalInventoryManagerScript.Instance.phase == 2)
             {
+                line.startColor = Color.green;
+                line.endColor = Color.green;
+                line.material.color = Color.green;
                 hightlightPrisoners.highlight(1);
                 dialogUI.gameObject.SetActive(true);
                 Debug.Log("colliding with 2");
@@ -147,6 +163,9 @@ public class buttonScript : MonoBehaviour
             }
             else if (other.gameObject.name == "prisoner3" && GlobalInventoryManagerScript.Instance.phase == 2)
             {
+                line.startColor = Color.green;
+                line.endColor = Color.green;
+                line.material.color = Color.green;
                 hightlightPrisoners.highlight(2);
                 dialogUI.gameObject.SetActive(true);
                 Debug.Log("colliding with 3");
@@ -182,6 +201,8 @@ public class buttonScript : MonoBehaviour
             hightlightPrisoners.dontHighlight();
             dialogUI.gameObject.SetActive(false);
             weaponsUI.gameObject.SetActive(false);
+            line.startColor = Color.red;
+            line.endColor = Color.red;
         }
     }
 

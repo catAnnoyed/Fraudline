@@ -15,11 +15,11 @@ public class phoencutscene : MonoBehaviour
     {
         if (GlobalInventoryManagerScript.Instance.phase == 0)
         {
-        bfr.Play();
-        num = 0;
-        Ui.SetActive(false);
-        bfr.stopped += OnCutsceneFinished1;
-        after.stopped += OnCutsceneFinished2;
+            bfr.Play();
+            num = 0;
+            Ui.SetActive(false);
+            bfr.stopped += OnCutsceneFinished1;
+            after.stopped += OnCutsceneFinished2;
         }
     }
 
