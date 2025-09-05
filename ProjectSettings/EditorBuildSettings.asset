@@ -26,6 +26,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/dialog3.unity
     guid: 26d111096447df74ba5700c508a94651
+  - enabled: 1
+    path: Assets/Scenes/Evidence scene.unity
+    guid: a4ae6436730729245b61a8e89e024c95
+  - enabled: 1
+    path: Assets/Scenes/EviStrengthen.unity
+    guid: 82e94ca3392d5014a843f2da21b997db
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

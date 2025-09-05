@@ -26,8 +26,8 @@ public class evidence : MonoBehaviour
     private LineRenderer line;
     public GameObject target;
     public int choosecounter;
-    public bool evidenceselected = false;
-    public GameObject[] chosen = new GameObject[3];
+    public static string[] chosen = new string[3];
+    public GameObject laseron;
 
     public float yoffset = 1.5f; // Offset to position the description above the item
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -55,17 +55,38 @@ public class evidence : MonoBehaviour
 
         // Draw the ray in the Scene view (red line for debugging)
         Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.red);
-
-        if (Physics.Raycast(ray, out hit, rayDistance))
+        if (choosecounter != 3)
         {
-            if (hit.collider.gameObject.CompareTag("evidence"))
+            if (Physics.Raycast(ray, out hit, rayDistance))
             {
-                target = hit.collider.gameObject;
-                target.GetComponent<Outline>().enabled = true;
-                line.startColor = Color.green;
-                line.endColor = Color.green;
-                description.transform.position = target.transform.position + new Vector3(0, 0 + yoffset, 0);
-                description.GetComponent<TextMeshPro>().text = "press B to choose item as evidence";
+                if (hit.collider.gameObject.CompareTag("evidence"))
+                {
+                    target = hit.collider.gameObject;
+                    target.GetComponent<Outline>().enabled = true;
+                    line.startColor = Color.green;
+                    line.endColor = Color.green;
+                    description.transform.position = target.transform.position + new Vector3(0, 0 + yoffset, 0);
+                    description.GetComponent<TextMeshPro>().text = "press B to choose item as evidence";
+                }
+                else
+                {
+                    target.GetComponent<Outline>().enabled = false;
+                    line.startColor = Color.red;
+                    line.endColor = Color.red;
+                    description.GetComponent<TextMeshPro>().text = "";
+                }
+                if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.B) || UnityEngine.Input.GetKeyDown(KeyCode.B))
+                {
+                    if (hit.collider.gameObject.CompareTag("evidence") && choosecounter < 3)
+                    {
+                        hit.collider.gameObject.tag = "chosen";
+                        description.GetComponent<TextMeshPro>().text = "";
+                        choosecounter += 1;
+                        chosen[choosecounter - 1] = target.name;
+                        target = null;
+
+                    }
+                }
             }
             else
             {
@@ -74,37 +95,21 @@ public class evidence : MonoBehaviour
                 line.endColor = Color.red;
                 description.GetComponent<TextMeshPro>().text = "";
             }
-            if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.B) || UnityEngine.Input.GetKeyDown(KeyCode.B))
-            {
-                if (hit.collider.gameObject.CompareTag("evidence") && choosecounter < 3)
-                {
-                    hit.collider.gameObject.tag = "chosen";
-                    description.GetComponent<TextMeshPro>().text = "";
-                    choosecounter += 1;
-                    chosen[choosecounter - 1] = target;
-                    target = null;
 
-                }
-            }
         }
-        else
-        {
-            target.GetComponent<Outline>().enabled = false;
-            line.startColor = Color.red;
-            line.endColor = Color.red;
-            description.GetComponent<TextMeshPro>().text = "";
-        }
-
-
         if (choosecounter == 3)
         {
             if (Physics.Raycast(ray, out hit, rayDistance))
             {
+                laseron = hit.collider.gameObject;
                 if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.B) || UnityEngine.Input.GetKeyDown(KeyCode.B))
                 {
+
                     if (hit.collider.gameObject.name == "confirm")
                     {
-                        //change scene
+                        Debug.Log("bbb");
+                        global.eviarray = chosen;
+                        SceneManager.LoadScene("EviStrengthen");
                     }
                 }
             }
