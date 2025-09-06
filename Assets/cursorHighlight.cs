@@ -32,11 +32,14 @@ public class cursorHighlight : MonoBehaviour
     public static bool isinspceting = false;
     private Vector3 originalGameboardLocation;
     public UnityEngine.Vector2 joystick;
+    public Vector3 originalgameboardscale;
     public GameObject location;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
         originalGameboardLocation = Gameboard.transform.position;
+        originalgameboardscale = Gameboard.transform.localScale;
         StartCoroutine(startdelay());
     }
 
@@ -137,6 +140,7 @@ public class cursorHighlight : MonoBehaviour
                         isinspceting = true;
                         platform1Obj.transform.position = location.transform.position;
                         Gameboard.transform.position = platform1Obj.transform.position - new Vector3(0, 1, 0);
+                        Gameboard.transform.localScale = originalgameboardscale * 0.5f;
                         //newcode
                         aim.SetActive(true);
                         if (platform1Obj.name == "Diario")
@@ -161,6 +165,7 @@ public class cursorHighlight : MonoBehaviour
                         isinspceting = false;
                         platform1Obj.transform.position = platform1ObjOriginalLocation;
                         Gameboard.transform.position = originalGameboardLocation;
+                        Gameboard.transform.localScale = originalgameboardscale;
                         //newcode
                         aim.SetActive(false);
                         if (platform1Obj.name == "Diario")
@@ -191,6 +196,7 @@ public class cursorHighlight : MonoBehaviour
                         isinspceting = true;
                         platform2Obj.transform.position = location.transform.position;
                         Gameboard.transform.position = platform2Obj.transform.position - new Vector3(0, 1, 0);
+                        Gameboard.transform.localScale = originalgameboardscale * 0.5f;
                         //newcode
                         aim.SetActive(true);
                         if (platform2Obj.name == "Diario")
@@ -215,6 +221,7 @@ public class cursorHighlight : MonoBehaviour
                         isinspceting = false;
                         platform2Obj.transform.position = platform2ObjOriginalLocation;
                         Gameboard.transform.position = originalGameboardLocation;
+                        Gameboard.transform.localScale = originalgameboardscale;
                         //newcode
                         aim.SetActive(false);
                         if (platform2Obj.name == "Diario")
@@ -245,6 +252,7 @@ public class cursorHighlight : MonoBehaviour
                         isinspceting = true;
                         platform3Obj.transform.position = location.transform.position;
                         Gameboard.transform.position = platform3Obj.transform.position - new Vector3(0, 1, 0);
+                        Gameboard.transform.localScale = originalgameboardscale * 0.5f;
                         //newcode
                         aim.SetActive(true);
                         if (platform3Obj.name == "Diario")
@@ -269,6 +277,7 @@ public class cursorHighlight : MonoBehaviour
                         isinspceting = false;
                         platform3Obj.transform.position = platform3ObjOriginalLocation;
                         Gameboard.transform.position = originalGameboardLocation;
+                        Gameboard.transform.localScale = originalgameboardscale;
                         //newcode
                         aim.SetActive(false);
                         if (platform3Obj.name == "Diario")
