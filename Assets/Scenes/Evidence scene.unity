@@ -1339,7 +1339,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1292021885761057380, guid: 68712f8f9fbada64eaea942f68b54fce, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.7
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2517026273506903375, guid: 68712f8f9fbada64eaea942f68b54fce, type: 3}
       propertyPath: audiosource
