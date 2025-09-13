@@ -7,7 +7,7 @@ using UnityEngine.InputSystem.Controls;
 using UnityEngine.Rendering.PostProcessing;
 using TMPro;
 
-public class uiscript : MonoBehaviour
+public class dialog3 : MonoBehaviour
 
 {
 
@@ -33,10 +33,10 @@ public class uiscript : MonoBehaviour
     {
         select = 1;
         answers = new string[] {
-            "James",
-            "I don't remember",
+            "My name is James Carter",
+            "UK 8",
             "empty",
-            "around 7 o'clock"
+            "I usaully wake up around 8.00 a.m. but sometimes I wake up earlier"
         };
 
         answer.SetActive(false);
@@ -147,3 +147,4 @@ public class uiscript : MonoBehaviour
         }
     }
 }
+

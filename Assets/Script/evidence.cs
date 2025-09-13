@@ -7,6 +7,7 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TiltFive;
+using UnityEditor.Experimental.GraphView;
 
 [RequireComponent(typeof(LineRenderer))]
 
@@ -55,8 +56,8 @@ public class evidence : MonoBehaviour
 
         // Draw the ray in the Scene view (red line for debugging)
         Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.red);
-        if (choosecounter != 3)
-        {
+        //if (choosecounter != 3)
+        //{
             if (Physics.Raycast(ray, out hit, rayDistance))
             {
                 if (hit.collider.gameObject.CompareTag("evidence"))
@@ -75,6 +76,7 @@ public class evidence : MonoBehaviour
                     line.endColor = Color.red;
                     description.GetComponent<TextMeshPro>().text = "";
                 }
+
                 if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.B) || UnityEngine.Input.GetKeyDown(KeyCode.B))
                 {
                     if (hit.collider.gameObject.CompareTag("evidence") && choosecounter < 3)
@@ -85,6 +87,16 @@ public class evidence : MonoBehaviour
                         chosen[choosecounter - 1] = target.name;
                         target = null;
 
+                    } else if (hit.collider.gameObject.CompareTag("chosen") && choosecounter >= 3) {
+                        hit.collider.gameObject.tag = "chosen";
+                        description.GetComponent<TextMeshPro>().text = "";
+                        GameObject temp = GameObject.Find(chosen[0]);
+                        temp.tag = "evidence";
+                        temp.GetComponent<Outline>().enabled = false;
+                        chosen[0] = chosen[1];
+                        chosen[1] = chosen[2];
+                        chosen[2] = target.name;
+                        target = null;
                     }
                 }
             }
@@ -96,7 +108,7 @@ public class evidence : MonoBehaviour
                 description.GetComponent<TextMeshPro>().text = "";
             }
 
-        }
+        //)
         if (choosecounter == 3)
         {
             if (Physics.Raycast(ray, out hit, rayDistance))

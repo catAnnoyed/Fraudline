@@ -2312,6 +2312,7 @@ GameObject:
   - component: {fileID: 1715170121}
   - component: {fileID: 1715170120}
   - component: {fileID: 1715170125}
+  - component: {fileID: 1715170126}
   m_Layer: 0
   m_Name: UI (1)
   m_TagString: Untagged
@@ -2484,6 +2485,36 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &1715170126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715170119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 652b2c55382d21b4e8f6dfe201613d8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glassesCamera: {fileID: 0}
+  select: 0
+  OriMaterial: {fileID: 2100000, guid: d27af3c04737d54488075cc074315892, type: 2}
+  SelectedMaterial: {fileID: 2100000, guid: f98f4750430ec7d48a03171e02da1e74, type: 2}
+  buttons:
+  - {fileID: 1612124074}
+  - {fileID: 936560246}
+  - {fileID: 1959590834}
+  - {fileID: 341929085}
+  answer: {fileID: 211566436}
+  answers: []
+  stick: {x: 0, y: 0}
+  location: {x: 0, y: 0, z: 0}
+  stickDown: 0
+  stickLeft: 0
+  stickRight: 0
+  stickUp: 0
+  answertext: {fileID: 1175222166}
 --- !u!1 &1869128643
 GameObject:
   m_ObjectHideFlags: 0

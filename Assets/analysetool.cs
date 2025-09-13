@@ -5,10 +5,11 @@ using UnityEngine;
 using JetBrains.Annotations;
 using System.Collections;
 using TiltFive;
+using UnityEditor.ProjectWindowCallback;
 
 [RequireComponent(typeof(LineRenderer))]
 
-public class analysetooln : MonoBehaviour
+public class analysetool : MonoBehaviour
 {
     public float rayDistance = 5f;
     private LineRenderer line;
@@ -32,6 +33,7 @@ public class analysetooln : MonoBehaviour
     public bool keypoint6;
     public bool keypoint7;
     public bool keypoint8;
+
     void Start()
     {
         line = GetComponent<LineRenderer>();
@@ -232,7 +234,11 @@ public class analysetooln : MonoBehaviour
 
                 }
             }
+
         }
+
+
+
         if (cursorHighlight.cursor == 1)
         {
             if (cursorHighlight.platform1Obj.name == "Diario")

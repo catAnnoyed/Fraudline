@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 
 public class cutscenetimeline : MonoBehaviour
@@ -112,6 +113,7 @@ public class cutscenetimeline : MonoBehaviour
     void EvidenceFinish(PlayableDirector director)
     {
         //add evidence chosing scene here
+        SceneManager.LoadScene("Evidence scene");
         Debug.Log("Evidence choosing scene");
     }
 

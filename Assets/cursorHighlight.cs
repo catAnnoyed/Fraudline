@@ -3,6 +3,9 @@ using TiltFive;
 using System.Collections;
 using Unity.VisualScripting;
 using Unity.VisualScripting.InputSystem;
+using TMPro;
+using NUnit.Framework.Internal;
+using UnityEngine.Playables;
 
 
 public class cursorHighlight : MonoBehaviour
@@ -34,6 +37,14 @@ public class cursorHighlight : MonoBehaviour
     public UnityEngine.Vector2 joystick;
     public Vector3 originalgameboardscale;
     public GameObject location;
+    private int cursorTemp;
+    public Material materialOri;
+    public Material materialSelected;
+    public GameObject present;
+    public Renderer renderer;
+    public TextMeshPro UItext;
+    public PlayableDirector win;
+    public PlayableDirector lose;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -41,6 +52,8 @@ public class cursorHighlight : MonoBehaviour
         originalGameboardLocation = Gameboard.transform.position;
         originalgameboardscale = Gameboard.transform.localScale;
         StartCoroutine(startdelay());
+        renderer = present.GetComponent<Renderer>();
+        materialOri = renderer.material;
     }
 
     IEnumerator startdelay()
@@ -89,7 +102,7 @@ public class cursorHighlight : MonoBehaviour
         joystick = TiltFive.Input.GetStickTilt();
         if (!isinspceting)
         {
-            if (UnityEngine.Input.GetKeyDown(KeyCode.RightArrow) || (joystick.x > 0.5f && joystickCentered))
+            if ((UnityEngine.Input.GetKeyDown(KeyCode.RightArrow) || (joystick.x > 0.5f && joystickCentered)) && cursor !=0)
             {
                 if (cursor != 3)
                 {
@@ -98,7 +111,7 @@ public class cursorHighlight : MonoBehaviour
                 }
 
             }
-            else if (UnityEngine.Input.GetKeyDown(KeyCode.LeftArrow) || (joystick.x < -0.5f && joystickCentered))
+            else if ((UnityEngine.Input.GetKeyDown(KeyCode.LeftArrow) || (joystick.x < -0.5f && joystickCentered))&& cursor !=0)
             {
                 if (cursor != 1)
                 {
@@ -106,29 +119,70 @@ public class cursorHighlight : MonoBehaviour
                     joystickCentered = false;
                 }
             }
+            else if ((UnityEngine.Input.GetKeyDown(KeyCode.DownArrow) || (joystick.x < -0.5f && joystickCentered))&& cursor !=0)
+            {
+                cursorTemp = cursor;
+                cursor = 0;
+                renderer.material = materialSelected;
+                joystickCentered = false;
+                UItext.text = "Press 'B' to confirm";
+            }
+            else if ((UnityEngine.Input.GetKeyDown(KeyCode.UpArrow) || (joystick.x < -0.5f && joystickCentered)) && cursor == 0)
+            {
+                renderer.material = materialOri;
+                cursor = cursorTemp;
+                UItext.text = "Press 'B' to analyse evidence";
+            }
         }
+
+        if (cursor == 0)
+        {
+            Debug.Log("Selecting");
+            if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.B) || UnityEngine.Input.GetKeyDown(KeyCode.F))
+            {
+                if ((rating.score == 100 && rating2.score == 100) || (rating.score == 100 && rating3.score == 100) || (rating3.score == 100 && rating2.score == 100))
+                {
+                    win.Play();
+                    Debug.Log("Win");
+                }
+                else
+                {
+                    lose.Play();
+                    Debug.Log("lose");
+                }
+            }
+        }
+
         if (joystick.x < 0.2f && joystick.x > -0.2f && joystick.y < 0.2f && joystick.y > -0.2f)
         {
             joystickCentered = true;
         }
+
         if (cursor == 1)
         {
             base1.GetComponent<Outline>().enabled = true;
             base2.GetComponent<Outline>().enabled = false;
             base3.GetComponent<Outline>().enabled = false;
         }
-        if (cursor == 2)
+        else if (cursor == 2)
         {
             base2.GetComponent<Outline>().enabled = true;
             base1.GetComponent<Outline>().enabled = false;
             base3.GetComponent<Outline>().enabled = false;
         }
-        if (cursor == 3)
+        else if (cursor == 3)
         {
             base3.GetComponent<Outline>().enabled = true;
             base2.GetComponent<Outline>().enabled = false;
             base1.GetComponent<Outline>().enabled = false;
         }
+        else
+        {
+            base3.GetComponent<Outline>().enabled = false;
+            base2.GetComponent<Outline>().enabled = false;
+            base1.GetComponent<Outline>().enabled = false;
+        }
+
         if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.B) || UnityEngine.Input.GetKeyDown(KeyCode.F))
         {
             if (IsObj1inspectable)
