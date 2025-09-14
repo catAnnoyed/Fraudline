@@ -57,18 +57,19 @@ public class startglasses : MonoBehaviour
 
                 if (TiltFive.Input.GetTrigger() > 0.5f || UnityEngine.Input.GetKeyDown(KeyCode.E))
                 {
+                    Debug.Log("Pressed");
                     if (target.name == buttons[0].name)
                     {
                         SceneManager.LoadScene("police");
                     }
-                    else if (target.name == buttons[1].name)
-                    {
-                        changeToOption();
-                    }
-                    else if (target.name == buttons[2].name)
-                    {
-                        back();
-                    }
+                    // else if (target.name == buttons[1].name)
+                    // {
+                    //     changeToOption();
+                    // }
+                    // else if (target.name == buttons[2].name)
+                    // {
+                    //     back();
+                    // }
                 }
             }
         }

@@ -24,7 +24,7 @@ public class dialog3 : MonoBehaviour
     private Vector2 lastStick;
     public bool stickDown;
     public bool stickLeft;
-    public bool stickRight;
+    public bool stickRight; 
     public bool stickUp;
     public TextMeshPro answertext;
 

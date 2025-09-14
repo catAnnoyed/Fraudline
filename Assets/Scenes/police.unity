@@ -7952,6 +7952,26 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.24741027
       objectReference: {fileID: 0}
+    - target: {fileID: -4396642182433536433, guid: 04004d0fd81e01b44b0f91ba4c0c1260, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4396642182433536433, guid: 04004d0fd81e01b44b0f91ba4c0c1260, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4396642182433536433, guid: 04004d0fd81e01b44b0f91ba4c0c1260, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: -4396642182433536433, guid: 04004d0fd81e01b44b0f91ba4c0c1260, type: 3}
+      propertyPath: m_SkinnedMotionVectors
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4396642182433536433, guid: 04004d0fd81e01b44b0f91ba4c0c1260, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cacfba0739c80ee41af06588ed97878a, type: 2}
     - target: {fileID: -3746190272939815206, guid: 04004d0fd81e01b44b0f91ba4c0c1260, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.000000014901161
