@@ -119,7 +119,7 @@ public class cursorHighlight : MonoBehaviour
                     joystickCentered = false;
                 }
             }
-            else if ((UnityEngine.Input.GetKeyDown(KeyCode.DownArrow) || (joystick.x < -0.5f && joystickCentered))&& cursor !=0)
+            else if ((UnityEngine.Input.GetKeyDown(KeyCode.DownArrow) || (joystick.y < -0.5f && joystickCentered))&& cursor !=0)
             {
                 cursorTemp = cursor;
                 cursor = 0;
@@ -127,7 +127,7 @@ public class cursorHighlight : MonoBehaviour
                 joystickCentered = false;
                 UItext.text = "Press 'B' to confirm";
             }
-            else if ((UnityEngine.Input.GetKeyDown(KeyCode.UpArrow) || (joystick.x < -0.5f && joystickCentered)) && cursor == 0)
+            else if ((UnityEngine.Input.GetKeyDown(KeyCode.UpArrow) || (joystick.y < -0.5f && joystickCentered)) && cursor == 0)
             {
                 renderer.material = materialOri;
                 cursor = cursorTemp;

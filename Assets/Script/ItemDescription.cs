@@ -5,12 +5,14 @@ using UnityEngine;
 using JetBrains.Annotations;
 using System.Collections;
 using TiltFive;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(LineRenderer))]
 
 public class ItemDescription : MonoBehaviour
 {
     public Vector3 originalposition;
+    public GameObject backbutton;
     public Vector3 originalboardposition;
     public Quaternion originalrotation;
     public GameObject ObjectToInspect;
@@ -147,16 +149,30 @@ public class ItemDescription : MonoBehaviour
                 }
             }
         }
-        
+
+        if (Physics.Raycast(ray, out hit, rayDistance))
+        {
+            if (hit.collider.gameObject == backbutton)
+            {
+                if (!inspectormode)
+                {
+                    if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.One))
+                    {
+                        Debug.Log("hi");
+                        SceneManager.LoadScene(toInventory.currentscene);
+                    }
+                }
+            }
+        }
     
         if (target == null)
-        {
-            description.GetComponent<TextMeshPro>().text = "";
-        }
-        else if (!hit.collider.gameObject.CompareTag("pickable") && !hit.collider.gameObject.CompareTag("evidence"))
-        {
-            description.GetComponent<TextMeshPro>().text = "";
-        }
+            {
+                description.GetComponent<TextMeshPro>().text = "";
+            }
+            else if (!hit.collider.gameObject.CompareTag("pickable") && !hit.collider.gameObject.CompareTag("evidence"))
+            {
+                description.GetComponent<TextMeshPro>().text = "";
+            }
 
         
 

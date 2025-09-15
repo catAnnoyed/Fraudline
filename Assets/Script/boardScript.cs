@@ -72,7 +72,7 @@ public class boardScript : MonoBehaviour
     void MoveJail()
     {
         isMoving = true;
-        Scale = new UnityEngine.Vector3(0.3f, 0.3f, 0.3f);
+        Scale = new UnityEngine.Vector3(0.45f, 0.45f, 0.45f);
         transform.DOScale(Scale, 0.5f);
         transform.DOMove(jails[i].transform.position, 0.8f)
             .OnComplete(() => {

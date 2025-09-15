@@ -3,18 +3,22 @@ using TiltFive;
 using UnityEngine.SceneManagement;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine.Playables;
+using Microsoft.Unity.VisualStudio.Editor;
+using UnityEngine.UI;
 
 public class startglasses : MonoBehaviour
 {
     public LineRenderer line;
     public float rayDistance = 5f;
     public GameObject target;
-    public Renderer[] renderers;
-    public GameObject[] buttons;
+    public GameObject buttoncollider;
     public LayerMask interactLayer;
     public GameObject menu;
     public GameObject option;
     public PlayableDirector splash;
+
+    public UnityEngine.UI.Image StartButton;
+    public string hexColor = "#a0a0a0ff";
 
     void Start()
     {
@@ -47,18 +51,16 @@ public class startglasses : MonoBehaviour
             {
                 line.startColor = Color.green;
                 line.endColor = Color.green;
-                renderers = target.GetComponentsInChildren<Renderer>();
-                for (int j = 0; j < renderers.Length; j++)
-                {
-                    Material mat = renderers[j].material;
-                    mat.EnableKeyword("_EMISSION");
-                    mat.SetColor("_EmissionColor", Color.white * 0.1f);
-                }
+                StartButton.color = Color.gray;
+                // if (ColorUtility.TryParseHtmlString(hexColor, out Color newColor)){
+                //     StartButton.color = Color.newColor;
+                // }
+
 
                 if (TiltFive.Input.GetTrigger() > 0.5f || UnityEngine.Input.GetKeyDown(KeyCode.E))
                 {
                     Debug.Log("Pressed");
-                    if (target.name == buttons[0].name)
+                    if (target.name == buttoncollider.name)
                     {
                         SceneManager.LoadScene("police");
                     }
@@ -75,15 +77,8 @@ public class startglasses : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < buttons.Length; i++)
-            {
-                renderers = buttons[i].GetComponentsInChildren<Renderer>();
-                for (int k = 0; k < renderers.Length; k++)
-                {
-                    Material mat = renderers[k].material;
-                    mat.DisableKeyword("_EMISSION");
-                }
-            }
+            StartButton.color = Color.white;
+                
 
             line.startColor = Color.red;
             line.endColor = Color.red;

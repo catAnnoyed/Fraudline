@@ -19,8 +19,11 @@ public class toInventory : MonoBehaviour
         {
             if (UnityEngine.Input.GetKeyDown(KeyCode.I) || TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.X))
             {
-                currentscene = SceneManager.GetActiveScene().name;
-                SceneManager.LoadScene("inventory");
+                if (SceneManager.GetActiveScene().name != "inventory")
+                {
+                    currentscene = SceneManager.GetActiveScene().name;
+                    SceneManager.LoadScene("inventory");
+                }
             }
         }
     }
