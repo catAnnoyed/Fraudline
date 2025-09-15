@@ -20,17 +20,17 @@ public class cutsceneUI : MonoBehaviour
 
         if (GlobalInventoryManagerScript.Instance.phase == 0 && radioUI.activeSelf)
         {
-            UIText.text = "Press A to continue";
+            UIText.text = "Press '1' to continue";
             transform.position = board.transform.position + new UnityEngine.Vector3(0, 2f, -1.5f);
         }
         else if (GlobalInventoryManagerScript.Instance.phase == 1 && !radioUI.activeSelf)
         {
-            UIText.text = "Press A to continue";
+            UIText.text = "Press '1' to continue";
             transform.position = board.transform.position + new UnityEngine.Vector3(0, 2.5f, -2f);
         }
         else if (GlobalInventoryManagerScript.Instance.phase == 2)
         {
-            UIText.text = "Press A to vist scammer's house";
+            UIText.text = "Press '1' to vist scammer's hideout";
             transform.position = door.transform.position + new UnityEngine.Vector3(0, 2f, 0f);
             transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }

@@ -29,6 +29,7 @@ public class evidence : MonoBehaviour
     public int choosecounter;
     public static string[] chosen = new string[3];
     public GameObject laseron;
+    public GameObject confirmUI;
 
     public float yoffset = 1.5f; // Offset to position the description above the item
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -67,7 +68,7 @@ public class evidence : MonoBehaviour
                     line.startColor = Color.green;
                     line.endColor = Color.green;
                     description.transform.position = target.transform.position + new Vector3(0, 0 + yoffset, 0);
-                    description.GetComponent<TextMeshPro>().text = "press B to choose item as evidence";
+                    description.GetComponent<TextMeshPro>().text = "press '2' to choose item as evidence";
                 }
                 else
                 {
@@ -77,7 +78,7 @@ public class evidence : MonoBehaviour
                     description.GetComponent<TextMeshPro>().text = "";
                 }
 
-                if (TiltFive.Input.GetButtonUp(TiltFive.Input.WandButton.B) || UnityEngine.Input.GetKeyDown(KeyCode.B))
+                if (TiltFive.Input.GetButtonUp(TiltFive.Input.WandButton.Two) || UnityEngine.Input.GetKeyDown(KeyCode.B))
                 {
                     if (hit.collider.gameObject.CompareTag("evidence") && choosecounter < 3)
                     {
@@ -114,7 +115,15 @@ public class evidence : MonoBehaviour
             if (Physics.Raycast(ray, out hit, rayDistance))
             {
                 laseron = hit.collider.gameObject;
-                if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.B) || UnityEngine.Input.GetKeyDown(KeyCode.B))
+                if (hit.collider.gameObject.name == "confirm")
+                {
+                    confirmUI.SetActive(true);
+                }
+                else
+                {
+                    confirmUI.SetActive(false);
+                }
+                if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.One) || UnityEngine.Input.GetKeyDown(KeyCode.B))
                 {
 
                     if (hit.collider.gameObject.name == "confirm")

@@ -28,12 +28,13 @@ public class radioUI : MonoBehaviour
 
 
         dialog = new string[] {
-            "Victim \nHello",
-            "Police \nThis is the police station",
-            "Victim \nDo you have any update my case of scammer?",
-            "Victim \nI need it to claim the lost from bsn",
-            "Police \nYes, good news we found three possible suspect",
-            "Police \nHowever, we dont have any conclusive evidence except for thier IP address"
+            "Victim \nGood Morning",
+            "Police Officer \nThis is the police station",
+            "Victim \nDo you have any update regarding the bank fraud case?",
+            "Victim \nI need an official report to claim the lose from BSN",
+            "Police Officer\nYes, we found three possible suspect",
+            "Police Officer\nHowever, we do not have any conclusive evidence yet except for the scammer's hideout location",
+            "Police Officer \nWe will be searching the hideout for clues and evidences"
         };
 
         if (UIText != null)
@@ -50,7 +51,7 @@ public class radioUI : MonoBehaviour
     void Update()
     {
         
-        if ((UnityEngine.Input.GetKeyDown(KeyCode.Space) || TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.A)) && cutscene.num == 1)
+        if ((UnityEngine.Input.GetKeyDown(KeyCode.Space) || TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.One)) && cutscene.num == 1)
         {
             if (i < dialog.Length - 1)
             {

@@ -31,9 +31,9 @@ public class DoorTrig : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            ui.GetComponent<TextMeshPro>().text = "Press A to open/close the door";
+            ui.GetComponent<TextMeshPro>().text = "Press '1' to open/close the door";
             Debug.Log("Player entered the door trigger area.");
-            if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.A) || UnityEngine.Input.GetKeyDown(KeyCode.E))
+            if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.One) || UnityEngine.Input.GetKeyDown(KeyCode.E))
             {
                 Debug.Log("E pressed.");
                 if (!isOpen)

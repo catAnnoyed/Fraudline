@@ -22,8 +22,8 @@ public class script : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Player is near the door");
-            doorui.GetComponent<TextMeshPro>().text = "Press A to enter the jail cell";
-            if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.A) || UnityEngine.Input.GetKeyDown(KeyCode.E))
+            doorui.GetComponent<TextMeshPro>().text = "Press '1' to enter the jail cell";
+            if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.One) || UnityEngine.Input.GetKeyDown(KeyCode.E))
             {
                 SceneManager.LoadScene("police");
             }

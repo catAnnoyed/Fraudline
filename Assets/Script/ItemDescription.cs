@@ -76,7 +76,7 @@ public class ItemDescription : MonoBehaviour
                 ObjectToInspect.transform.rotation *= quaternion.Euler(-1.2f * Time.deltaTime, 0, 0);
             }
         }
-        if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.Y) || UnityEngine.Input.GetKeyDown(KeyCode.E))
+        if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.Two) || UnityEngine.Input.GetKeyDown(KeyCode.E))
         {
             if (inspectormode)
             {
@@ -93,16 +93,17 @@ public class ItemDescription : MonoBehaviour
             {
                 if (Physics.Raycast(ray, out hit, rayDistance))
                 {
-                    inspectormode = true;
                     target = hit.collider.gameObject;
-                    Debug.Log("inspector on");
-                    originalposition = target.transform.position;
-                    originalrotation = target.transform.rotation;
-                    ObjectToInspect = target;
-                    ObjectToInspect.transform.position = originalposition + new Vector3(0, 3f, 0);
-                    ObjectToInspect.GetComponent<Rigidbody>().isKinematic = true;
-                    board.transform.position = ObjectToInspect.transform.position + new Vector3(0, -0.3f, 0);
-                    board.transform.localScale = new Vector3(0.42f, 0.42f, 0.42f);
+                    if (!target.CompareTag("back")) { inspectormode = true;
+
+                        Debug.Log("inspector on");
+                        originalposition = target.transform.position;
+                        originalrotation = target.transform.rotation;
+                        ObjectToInspect = target;
+                        ObjectToInspect.transform.position = originalposition + new Vector3(0, 3f, 0);
+                        ObjectToInspect.GetComponent<Rigidbody>().isKinematic = true;
+                        board.transform.position = ObjectToInspect.transform.position + new Vector3(0, -0.3f, 0);
+                        board.transform.localScale = new Vector3(0.42f, 0.42f, 0.42f); }
                     
                 }
             }

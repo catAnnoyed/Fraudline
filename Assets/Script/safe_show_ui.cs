@@ -40,7 +40,7 @@ public class safe_show_ui : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.A) || UnityEngine.Input.GetKeyDown(KeyCode.E))
+            if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.One) || UnityEngine.Input.GetKeyDown(KeyCode.E))
             {
                 if (safelock == null)
                 {
@@ -72,7 +72,7 @@ public class safe_show_ui : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        ui.GetComponent<TextMeshPro>().text = "Press A to interact";
+        ui.GetComponent<TextMeshPro>().text = "Press '1' to interact";
     }
     void OnTriggerExit(Collider other)
     {

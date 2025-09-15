@@ -83,7 +83,7 @@ public class buttonScript : MonoBehaviour
                     }
                     else
                     {
-                        UI[i].text = "Press trigger to release suspect";
+                        UI[i].text = "Press '2' to release suspect";
                     }
 
                     if (other.gameObject.name == buttons[i].name && !GlobalInventoryManagerScript.Instance.opened[i])
@@ -97,7 +97,7 @@ public class buttonScript : MonoBehaviour
                         }
                     }
 
-                    if ((TiltFive.Input.GetTrigger() > 0.5f || UnityEngine.Input.GetKeyDown(KeyCode.E)) && GlobalItemComplete.allItemsCollected)
+                    if ((TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.Two)|| UnityEngine.Input.GetKeyDown(KeyCode.E)) && GlobalItemComplete.allItemsCollected)
                     {
                         Debug.Log("key pressed");
                         Debug.Log(other.gameObject);
@@ -140,7 +140,7 @@ public class buttonScript : MonoBehaviour
                 hightlightPrisoners.highlight(0);
                 dialogUI.gameObject.SetActive(true);
                 Debug.Log("colliding with 1");
-                if (TiltFive.Input.GetTrigger() > 0.5f || UnityEngine.Input.GetKeyDown(KeyCode.E))
+                if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.Two) || UnityEngine.Input.GetKeyDown(KeyCode.E))
                 {
 
                     Debug.Log("Scene dialog1 supposed to load");
@@ -155,7 +155,7 @@ public class buttonScript : MonoBehaviour
                 hightlightPrisoners.highlight(1);
                 dialogUI.gameObject.SetActive(true);
                 Debug.Log("colliding with 2");
-                if (TiltFive.Input.GetTrigger() > 0.5f || UnityEngine.Input.GetKeyDown(KeyCode.E))
+                if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.Two)|| UnityEngine.Input.GetKeyDown(KeyCode.E))
                 {
                     Debug.Log("pressed");
                     SceneManager.LoadScene("dialog2");
@@ -169,7 +169,7 @@ public class buttonScript : MonoBehaviour
                 hightlightPrisoners.highlight(2);
                 dialogUI.gameObject.SetActive(true);
                 Debug.Log("colliding with 3");
-                if (TiltFive.Input.GetTrigger() > 0.5f || UnityEngine.Input.GetKeyDown(KeyCode.E))
+                if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.Two) || UnityEngine.Input.GetKeyDown(KeyCode.E))
                 {
                     SceneManager.LoadScene("dialog3");
                 }

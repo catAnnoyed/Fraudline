@@ -78,7 +78,7 @@ public class RaycastpickItem : MonoBehaviour
                     line.startColor = Color.green;
                     line.endColor = Color.green;
                 }
-                if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.Y) || UnityEngine.Input.GetKeyDown(KeyCode.F))
+                if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.Two) || UnityEngine.Input.GetKeyDown(KeyCode.F))
                 {
                     Debug.Log("F pressed on evidence");
 

@@ -36,7 +36,7 @@ public class boardScript : MonoBehaviour
         {
             if (i < 3)
             {
-                if ((UnityEngine.Input.GetKeyDown(KeyCode.Space) || TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.A)) && !isMoving)
+                if ((UnityEngine.Input.GetKeyDown(KeyCode.Space) || TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.One)) && !isMoving)
                 {
                     //callUI.SetActive(false);
                     MoveJail();
@@ -44,7 +44,7 @@ public class boardScript : MonoBehaviour
             }
             else
             {
-                if (UnityEngine.Input.GetKeyDown(KeyCode.Space) || TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.A))
+                if (UnityEngine.Input.GetKeyDown(KeyCode.Space) || TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.One))
                 {
                     GlobalInventoryManagerScript.Instance.phase = 2;
                     doorUI.SetActive(false);
