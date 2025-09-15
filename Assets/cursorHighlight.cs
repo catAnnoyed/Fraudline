@@ -127,10 +127,11 @@ public class cursorHighlight : MonoBehaviour
                 joystickCentered = false;
                 UItext.text = "Press '1' to confirm";
             }
-            else if ((UnityEngine.Input.GetKeyDown(KeyCode.UpArrow) || (joystick.y < 0.5f && joystickCentered)) && cursor == 0)
+            else if ((UnityEngine.Input.GetKeyDown(KeyCode.UpArrow) || (joystick.y > 0.5f && joystickCentered)) && cursor == 0)
             {
                 renderer.material = materialOri;
                 cursor = cursorTemp;
+                joystickCentered = false;
                 UItext.text = "Press '1' to analyse evidence";
             }
         }
