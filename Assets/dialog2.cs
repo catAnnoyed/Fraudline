@@ -45,22 +45,22 @@ public class dialog2 : MonoBehaviour
 
     void Update()
     {
-        // if (glassesCamera == null)
-        // {
-        //     glassesCamera = GameObject.Find("Left Eye Camera").transform.parent.gameObject;
-        // }
-        // else
-        // {
-        //     // //transform.rotation = 
-        //     Transform cam = glassesCamera.transform;
-        //     transform.LookAt(
-        //         transform.position + cam.rotation * Vector3.forward,
-        //         cam.rotation * Vector3.up
-        //     );
-        //     // Vector3 toCamera = glassesCamera.transform.position - transform.position;
-        //     // transform.rotation = Quaternion.LookRotation(-Vector3.forward, toCamera);
+        if (glassesCamera == null)
+        {
+            glassesCamera = GameObject.Find("Left Eye Camera").transform.parent.gameObject;
+        }
+        else
+        {
+            // //transform.rotation = 
+            Transform cam = glassesCamera.transform;
+            transform.LookAt(
+                transform.position + cam.rotation * Vector3.forward,
+                cam.rotation * Vector3.up
+            );
+            // Vector3 toCamera = glassesCamera.transform.position - transform.position;
+            // transform.rotation = Quaternion.LookRotation(-Vector3.forward, toCamera);
 
-        // }
+        }
         Vector2 stick = TiltFive.Input.GetStickTilt();
         stickRight = stick.x > 0.5f && lastStick.x <= 0.5f;
         stickLeft  = stick.x < -0.5f && lastStick.x >= -0.5f;

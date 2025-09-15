@@ -77,7 +77,7 @@ public class evidence : MonoBehaviour
                     description.GetComponent<TextMeshPro>().text = "";
                 }
 
-                if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.B) || UnityEngine.Input.GetKeyDown(KeyCode.B))
+                if (TiltFive.Input.GetButtonUp(TiltFive.Input.WandButton.B) || UnityEngine.Input.GetKeyDown(KeyCode.B))
                 {
                     if (hit.collider.gameObject.CompareTag("evidence") && choosecounter < 3)
                     {

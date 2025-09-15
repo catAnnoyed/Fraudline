@@ -639,11 +639,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ec977390e21f47542b10c148ca69fd8f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.39
+      value: 3.09
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ec977390e21f47542b10c148ca69fd8f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.15999985
+      value: 0.16
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ec977390e21f47542b10c148ca69fd8f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13554,7 +13554,6 @@ GameObject:
   - component: {fileID: 2033194870}
   - component: {fileID: 2033194869}
   - component: {fileID: 2033194868}
-  - component: {fileID: 2033194867}
   - component: {fileID: 2033194866}
   - component: {fileID: 2033194865}
   m_Layer: 0
@@ -13639,35 +13638,6 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
---- !u!114 &2033194867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2033194864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f38bda98361e1de48a4ca2bd86ea3c17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Composition:
-    ScreenPosition: {x: 0, y: 0}
-    DeadZone:
-      Enabled: 0
-      Size: {x: 0.2, y: 0.2}
-    HardLimits:
-      Enabled: 0
-      Size: {x: 0.8, y: 0.8}
-      Offset: {x: 0, y: 0}
-  CenterOnActivate: 1
-  TargetOffset: {x: 0, y: 0, z: 0}
-  Damping: {x: 0.5, y: 0.5}
-  Lookahead:
-    Enabled: 0
-    Time: 0
-    Smoothing: 0
-    IgnoreY: 0
 --- !u!114 &2033194868
 MonoBehaviour:
   m_ObjectHideFlags: 0

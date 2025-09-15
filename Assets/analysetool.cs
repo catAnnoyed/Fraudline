@@ -59,7 +59,7 @@ public class analysetool : MonoBehaviour
         if (Physics.Raycast(ray, out hit, rayDistance))
         {
             target = hit.collider.gameObject;
-            if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.X) || UnityEngine.Input.GetKeyDown(KeyCode.E))
+            if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.Two) || UnityEngine.Input.GetKeyDown(KeyCode.E))
             {
                 if (hit.collider.gameObject.name == "social")
                 {

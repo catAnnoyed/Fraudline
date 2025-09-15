@@ -35,6 +35,8 @@ public class cutscenetimeline : MonoBehaviour
         {
             prisoner3.SetActive(false);
         }
+
+        evidence.stopped += EvidenceFinish;
     }
 
     // Update is called once per frame
@@ -44,8 +46,6 @@ public class cutscenetimeline : MonoBehaviour
         {
             arrow.SetActive(true);
         }
-
-        evidence.stopped += EvidenceFinish;
     }
 
     public void doorOpened(int i)
@@ -107,6 +107,7 @@ public class cutscenetimeline : MonoBehaviour
         else if (GlobalInventoryManagerScript.Instance.opened[1] && GlobalInventoryManagerScript.Instance.opened[2])
         {
             evidence.Play();
+            aim.SetActive(false);
         }
     }
 

@@ -20,7 +20,7 @@ public class GlobalItemComplete : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!alarm.activeSelf && !keys.activeSelf && !diary.activeSelf && !shoe.activeSelf && !whiteboard.activeSelf && !letter.activeSelf && !USB.activeSelf && !usd.activeSelf && safe_show_ui.opened)
+        if (!alarm.activeSelf && !keys.activeSelf && !diary.activeSelf && !shoe.activeSelf && !whiteboard.activeSelf && !letter.activeSelf && !USB.activeSelf && !usd.activeSelf)
         {
             allItemsCollected = true;
             Debug.Log("All items collected!");

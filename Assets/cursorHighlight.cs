@@ -125,20 +125,20 @@ public class cursorHighlight : MonoBehaviour
                 cursor = 0;
                 renderer.material = materialSelected;
                 joystickCentered = false;
-                UItext.text = "Press 'B' to confirm";
+                UItext.text = "Press '1' to confirm";
             }
-            else if ((UnityEngine.Input.GetKeyDown(KeyCode.UpArrow) || (joystick.y < -0.5f && joystickCentered)) && cursor == 0)
+            else if ((UnityEngine.Input.GetKeyDown(KeyCode.UpArrow) || (joystick.y < 0.5f && joystickCentered)) && cursor == 0)
             {
                 renderer.material = materialOri;
                 cursor = cursorTemp;
-                UItext.text = "Press 'B' to analyse evidence";
+                UItext.text = "Press '1' to analyse evidence";
             }
         }
 
         if (cursor == 0)
         {
             Debug.Log("Selecting");
-            if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.B) || UnityEngine.Input.GetKeyDown(KeyCode.F))
+            if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.One) || UnityEngine.Input.GetKeyDown(KeyCode.F))
             {
                 if ((rating.score == 100 && rating2.score == 100) || (rating.score == 100 && rating3.score == 100) || (rating3.score == 100 && rating2.score == 100))
                 {
@@ -183,7 +183,7 @@ public class cursorHighlight : MonoBehaviour
             base1.GetComponent<Outline>().enabled = false;
         }
 
-        if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.B) || UnityEngine.Input.GetKeyDown(KeyCode.F))
+        if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.One) || UnityEngine.Input.GetKeyDown(KeyCode.F))
         {
             if (IsObj1inspectable)
             {
