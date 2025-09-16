@@ -66,7 +66,7 @@ public class boardScript : MonoBehaviour
 
         }
 
-        dialogUI.transform.position = transform.position + new UnityEngine.Vector3(0, 6f, 0);
+        dialogUI.transform.position = transform.position + new UnityEngine.Vector3(1f, 5f, -3f);
     }
 
     void MoveJail()

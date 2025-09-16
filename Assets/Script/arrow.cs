@@ -7,7 +7,7 @@ public class arrow : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public GameObject player;
     public GameObject door;
-    private Vector3 offset = new Vector3(0f,0.35f,0f);
+    private Vector3 offset = new Vector3(0f,0.0f,0f);
     private Vector3 rotationOffset = new Vector3(90f,90f,0); 
     private float rotationSpeed = 5f;
     void Start()

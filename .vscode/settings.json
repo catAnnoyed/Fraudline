@@ -66,5 +66,5 @@
     "explorer.fileNesting.patterns": {
         "*.sln": "*.csproj"
     },
-    "dotnet.defaultSolution": "Fraudline newe.sln"
+    "dotnet.defaultSolution": "Fraudline.sln"
 }

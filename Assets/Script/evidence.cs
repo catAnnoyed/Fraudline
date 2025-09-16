@@ -32,6 +32,8 @@ public class evidence : MonoBehaviour
     public GameObject confirmUI;
     public Renderer confrimRenderer;
     public GameObject Confirm;
+    public Renderer [] renderers;
+    public Renderer renderer;
 
     public float yoffset = 1.5f; // Offset to position the description above the item
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -45,6 +47,7 @@ public class evidence : MonoBehaviour
         line.material = new Material(Shader.Find("Sprites/Default"));
         line.startColor = Color.red;
         line.endColor = Color.red;
+        choosecounter = 0;
     }
 
 
@@ -61,55 +64,61 @@ public class evidence : MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.red);
         //if (choosecounter != 3)
         //{
-            if (Physics.Raycast(ray, out hit, rayDistance))
+        if (Physics.Raycast(ray, out hit, rayDistance))
+        {
+            if (hit.collider.gameObject.CompareTag("evidence"))
             {
-                if (hit.collider.gameObject.CompareTag("evidence"))
-                {
-                    target = hit.collider.gameObject;
-                    target.GetComponent<Outline>().enabled = true;
-                    line.startColor = Color.green;
-                    line.endColor = Color.green;
-                    description.transform.position = target.transform.position + new Vector3(0, 0 + yoffset, 0);
-                    description.GetComponent<TextMeshPro>().text = "press '2' to choose item as evidence";
-                }
-                else
-                {
-                    target.GetComponent<Outline>().enabled = false;
-                    line.startColor = Color.red;
-                    line.endColor = Color.red;
-                    description.GetComponent<TextMeshPro>().text = "";
-                }
-
-                if (TiltFive.Input.GetButtonUp(TiltFive.Input.WandButton.Two) || UnityEngine.Input.GetKeyDown(KeyCode.B))
-                {
-                    if (hit.collider.gameObject.CompareTag("evidence") && choosecounter < 3)
-                    {
-                        hit.collider.gameObject.tag = "chosen";
-                        description.GetComponent<TextMeshPro>().text = "";
-                        choosecounter += 1;
-                        chosen[choosecounter - 1] = target.name;
-                        target = null;
-
-                    } else if (hit.collider.gameObject.CompareTag("evidence") && choosecounter >= 3) {
-                        hit.collider.gameObject.tag = "chosen";
-                        description.GetComponent<TextMeshPro>().text = "";
-                        GameObject temp = GameObject.Find(chosen[0]);
-                        temp.tag = "evidence";
-                        temp.GetComponent<Outline>().enabled = false;
-                        chosen[0] = chosen[1];
-                        chosen[1] = chosen[2];
-                        chosen[2] = target.name;
-                        target = null;
-                    }
-                }
+                target = hit.collider.gameObject;
+                //target.GetComponent<Outline>().enabled = true;
+                highlight(target);
+                line.startColor = Color.green;
+                line.endColor = Color.green;
+                description.transform.position = target.transform.position + new Vector3(0, 0 + yoffset, 0);
+                description.GetComponent<TextMeshPro>().text = "press '2' to choose item as evidence";
             }
             else
             {
-                target.GetComponent<Outline>().enabled = false;
+                //target.GetComponent<Outline>().enabled = false;
+                dontHighlight(target);
                 line.startColor = Color.red;
                 line.endColor = Color.red;
                 description.GetComponent<TextMeshPro>().text = "";
             }
+
+            if (TiltFive.Input.GetButtonUp(TiltFive.Input.WandButton.Two) || UnityEngine.Input.GetKeyDown(KeyCode.B))
+            {
+                if (hit.collider.gameObject.CompareTag("evidence") && choosecounter < 3)
+                {
+                    hit.collider.gameObject.tag = "chosen";
+                    description.GetComponent<TextMeshPro>().text = "";
+                    choosecounter += 1;
+                    chosen[choosecounter - 1] = target.name;
+                    target = null;
+
+                }
+                else if (hit.collider.gameObject.CompareTag("evidence") && choosecounter >= 3)
+                {
+                    hit.collider.gameObject.tag = "chosen";
+                    description.GetComponent<TextMeshPro>().text = "";
+                    GameObject temp = GameObject.Find(chosen[0]);
+                    temp.tag = "evidence";
+                    //temp.GetComponent<Outline>().enabled = false;
+                    dontHighlight(temp);
+                    chosen[0] = chosen[1];
+                    chosen[1] = chosen[2];
+                    chosen[2] = target.name;
+                    target = null;
+                }
+            }
+        }
+        else
+        {
+            //target.GetComponent<Outline>().enabled = false;
+            dontHighlight(target);
+            line.startColor = Color.red;
+            line.endColor = Color.red;
+            description.GetComponent<TextMeshPro>().text = "";
+        }
 
         //)
         if (choosecounter == 3)
@@ -149,6 +158,26 @@ public class evidence : MonoBehaviour
                 Material mat = confrimRenderer.material;
                 mat.DisableKeyword("_EMISSION");
             }
+        }
+    }
+
+    public void highlight(GameObject evi)
+    {
+        GameObject child = evi.transform.Find("shade").gameObject;
+        if (child == null)
+        {
+            Debug.Log("cannot find");
+        }
+        child.SetActive(true);
+
+    }
+
+    public void dontHighlight(GameObject evi)
+    {
+        GameObject child = evi.transform.Find("shade").gameObject;
+        if (child != null)
+        {
+            child.SetActive(false);
         }
     }
 }
