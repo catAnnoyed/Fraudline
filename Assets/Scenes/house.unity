@@ -10048,6 +10048,7 @@ MonoBehaviour:
   lockscript: {fileID: 8606813038460744048, guid: e20ec18ae1b222f43bd5ffd5853c004b, type: 3}
   USB: {fileID: 0}
   audiosource: {fileID: 1325839248}
+  flag: 0
 --- !u!65 &1325839244
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12054,7 +12055,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1768248504}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8fb5709a73ba449438ae3ccf0884b846, type: 3}
   m_Name: 
