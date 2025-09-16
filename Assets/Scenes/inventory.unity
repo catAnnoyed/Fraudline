@@ -250,7 +250,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e0f854bb5630b97468a35f53be105cf0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.39
+      value: 3.48
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e0f854bb5630b97468a35f53be105cf0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -258,7 +258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e0f854bb5630b97468a35f53be105cf0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.68
+      value: -1.16
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e0f854bb5630b97468a35f53be105cf0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -724,10 +724,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Press ''2'' while poiniting at evidence to inspect it
+  m_text: 'Press ''2'' to inspect evidence
 
-    Press ''2''
-    while pointing at back button to go back'
+    Use joystick to rotate object in
+    inspector mode
+
+    Press ''2'' while pointing at back button to go back'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -854,7 +856,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 272651017}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -8.61}
+  m_LocalPosition: {x: 0, y: 0, z: -7.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -862,7 +864,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7.52, y: -1.16}
+  m_AnchoredPosition: {x: 7.43, y: -1.16}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &298342234
@@ -3193,7 +3195,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1166949921835019283, guid: 842a3b73695281a4388a109621b08305, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.1452498
+      value: 3.3
       objectReference: {fileID: 0}
     - target: {fileID: 1166949921835019283, guid: 842a3b73695281a4388a109621b08305, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3201,7 +3203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1166949921835019283, guid: 842a3b73695281a4388a109621b08305, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.7230344
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 1166949921835019283, guid: 842a3b73695281a4388a109621b08305, type: 3}
       propertyPath: m_LocalRotation.w

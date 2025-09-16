@@ -17,7 +17,7 @@ public class SpawnUI : MonoBehaviour
     }
     IEnumerator changetext()
     {
-        ui.GetComponent<TextMeshPro>().text = "Task: Find clues and evidence to catch the scammer";
+        ui.GetComponent<TextMeshPro>().text = "Task: Find clues and evidence to catch the scammer \n'1' to open dooor \n'2' to add inventory";
         yield return new WaitForSeconds(5);
         ui.GetComponent<TextMeshPro>().text = "";
     }
