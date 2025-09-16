@@ -85,17 +85,19 @@ public class cutscenetimeline : MonoBehaviour
 
     void OnCutsceneFinished(PlayableDirector director)
     {
-        aim.SetActive(true);
-        playerController.enabled = true;
 
         if (GlobalInventoryManagerScript.Instance.opened[1])
         {
             prisoner2.SetActive(false);
+            aim.SetActive(true);
+            playerController.enabled = true;
         }
 
         if (GlobalInventoryManagerScript.Instance.opened[2])
         {
             prisoner3.SetActive(false);
+             aim.SetActive(true);
+            playerController.enabled = true;
         }
 
         if (GlobalInventoryManagerScript.Instance.opened[0])
