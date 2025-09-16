@@ -30,6 +30,8 @@ public class evidence : MonoBehaviour
     public static string[] chosen = new string[3];
     public GameObject laseron;
     public GameObject confirmUI;
+    public Renderer confrimRenderer;
+    public GameObject Confirm;
 
     public float yoffset = 1.5f; // Offset to position the description above the item
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -88,7 +90,7 @@ public class evidence : MonoBehaviour
                         chosen[choosecounter - 1] = target.name;
                         target = null;
 
-                    } else if (hit.collider.gameObject.CompareTag("chosen") && choosecounter >= 3) {
+                    } else if (hit.collider.gameObject.CompareTag("evidence") && choosecounter >= 3) {
                         hit.collider.gameObject.tag = "chosen";
                         description.GetComponent<TextMeshPro>().text = "";
                         GameObject temp = GameObject.Find(chosen[0]);
@@ -118,14 +120,20 @@ public class evidence : MonoBehaviour
                 if (hit.collider.gameObject.name == "confirm")
                 {
                     confirmUI.SetActive(true);
+                    confrimRenderer = Confirm.GetComponent<Renderer>();
+                    Material mat = confrimRenderer.material;
+                    mat.EnableKeyword("_EMISSION");
+                    mat.SetColor("_EmissionColor", Color.black * 0.055f);
                 }
                 else
                 {
                     confirmUI.SetActive(false);
+                    confrimRenderer = Confirm.GetComponent<Renderer>();
+                    Material mat = confrimRenderer.material;
+                    mat.DisableKeyword("_EMISSION");
                 }
-                if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.One) || UnityEngine.Input.GetKeyDown(KeyCode.B))
+                if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.Two) || UnityEngine.Input.GetKeyDown(KeyCode.B))
                 {
-
                     if (hit.collider.gameObject.name == "confirm")
                     {
                         Debug.Log("bbb");
@@ -133,6 +141,13 @@ public class evidence : MonoBehaviour
                         SceneManager.LoadScene("EviStrengthen");
                     }
                 }
+            }
+            else
+            {
+                confirmUI.SetActive(false);
+                confrimRenderer = Confirm.GetComponent<Renderer>();
+                Material mat = confrimRenderer.material;
+                mat.DisableKeyword("_EMISSION");
             }
         }
     }

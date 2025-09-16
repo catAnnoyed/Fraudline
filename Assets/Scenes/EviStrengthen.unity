@@ -6768,6 +6768,7 @@ MonoBehaviour:
   UItext: {fileID: 2079449686}
   win: {fileID: 1030264354}
   lose: {fileID: 549675398}
+  analyseUI: {fileID: 2079449685}
 --- !u!4 &1312327826
 Transform:
   m_ObjectHideFlags: 0

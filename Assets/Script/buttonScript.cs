@@ -97,7 +97,7 @@ public class buttonScript : MonoBehaviour
                         }
                     }
 
-                    if ((TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.Two)|| UnityEngine.Input.GetKeyDown(KeyCode.E)) && GlobalItemComplete.allItemsCollected)
+                    if ((TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.Two) || UnityEngine.Input.GetKeyDown(KeyCode.E)) && GlobalItemComplete.allItemsCollected)
                     {
                         Debug.Log("key pressed");
                         Debug.Log(other.gameObject);
@@ -155,7 +155,7 @@ public class buttonScript : MonoBehaviour
                 hightlightPrisoners.highlight(1);
                 dialogUI.gameObject.SetActive(true);
                 Debug.Log("colliding with 2");
-                if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.Two)|| UnityEngine.Input.GetKeyDown(KeyCode.E))
+                if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.Two) || UnityEngine.Input.GetKeyDown(KeyCode.E))
                 {
                     Debug.Log("pressed");
                     SceneManager.LoadScene("dialog2");
@@ -203,6 +203,7 @@ public class buttonScript : MonoBehaviour
             weaponsUI.gameObject.SetActive(false);
             line.startColor = Color.red;
             line.endColor = Color.red;
+            line.material.color = Color.red;
         }
     }
 

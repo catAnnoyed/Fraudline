@@ -94,7 +94,7 @@ public class ItemDescription : MonoBehaviour
                 if (Physics.Raycast(ray, out hit, rayDistance))
                 {
                     target = hit.collider.gameObject;
-                    if (!target.CompareTag("back")) { inspectormode = true;
+                    if (!target.CompareTag("back") && !(target.name == "Plane")) { inspectormode = true;
 
                         Debug.Log("inspector on");
                         originalposition = target.transform.position;
@@ -157,7 +157,7 @@ public class ItemDescription : MonoBehaviour
             {
                 if (!inspectormode)
                 {
-                    if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.One))
+                    if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.Two))
                     {
                         Debug.Log("hi");
                         SceneManager.LoadScene(toInventory.currentscene);

@@ -19,7 +19,7 @@ public class camera_follow : MonoBehaviour
         {
             leftEyeCamera = GameObject.Find("Left Eye Camera");
         }
-        transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 4f, player.transform.position.z);
+        transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 2f, player.transform.position.z);
         transform.LookAt(leftEyeCamera.transform.position);
         transform.Rotate(180f, 0f, 180f); // rotate 180° on X axis
     }

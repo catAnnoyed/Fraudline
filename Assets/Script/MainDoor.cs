@@ -30,7 +30,7 @@ public class MainDoor : MonoBehaviour
             UI.SetActive(true);
             Debug.Log("is player");
 
-            if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.A) || UnityEngine.Input.GetKeyDown(KeyCode.E))
+            if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.One) || UnityEngine.Input.GetKeyDown(KeyCode.E))
             {
                 // animation?
                 soundEffect.Play();

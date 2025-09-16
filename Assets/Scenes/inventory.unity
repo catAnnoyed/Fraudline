@@ -726,7 +726,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Press ''2'' while poiniting at evidence to inspect it
 
-    Press ''1''
+    Press ''2''
     while pointing at back button to go back'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

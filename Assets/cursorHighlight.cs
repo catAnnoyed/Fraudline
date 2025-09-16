@@ -45,6 +45,7 @@ public class cursorHighlight : MonoBehaviour
     public TextMeshPro UItext;
     public PlayableDirector win;
     public PlayableDirector lose;
+    public GameObject analyseUI;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -164,18 +165,40 @@ public class cursorHighlight : MonoBehaviour
             base1.GetComponent<Outline>().enabled = true;
             base2.GetComponent<Outline>().enabled = false;
             base3.GetComponent<Outline>().enabled = false;
+            if (platform1Obj.name == "Diario" || platform1Obj.name == "whiteboard" || platform1Obj.name == "Letter" || platform1Obj.name == "USB")
+            {
+                analyseUI.SetActive(true);
+            }
+            else
+            {
+                analyseUI.SetActive(false);
+            }
         }
         else if (cursor == 2)
         {
             base2.GetComponent<Outline>().enabled = true;
             base1.GetComponent<Outline>().enabled = false;
             base3.GetComponent<Outline>().enabled = false;
+            if (platform2Obj.name == "Diario" || platform2Obj.name == "whiteboard" || platform2Obj.name == "Letter" || platform2Obj.name == "USB")
+            {
+                analyseUI.SetActive(true);
+            }else
+            {
+                analyseUI.SetActive(false);
+            }
         }
         else if (cursor == 3)
         {
             base3.GetComponent<Outline>().enabled = true;
             base2.GetComponent<Outline>().enabled = false;
             base1.GetComponent<Outline>().enabled = false;
+            if (platform3Obj.name == "Diario" || platform3Obj.name == "whiteboard" || platform3Obj.name == "Letter" || platform3Obj.name == "USB")
+            {
+                analyseUI.SetActive(true);
+            }else
+            {
+                analyseUI.SetActive(false);
+            }
         }
         else
         {

@@ -34,7 +34,7 @@ public class Locked_room : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.A) || UnityEngine.Input.GetKeyDown(KeyCode.E))
+            if (TiltFive.Input.GetButtonDown(TiltFive.Input.WandButton.One) || UnityEngine.Input.GetKeyDown(KeyCode.E))
             {
                 Debug.Log("E pressed.");
                 if (key == null)
@@ -91,12 +91,12 @@ public class Locked_room : MonoBehaviour
     {
         if (other.CompareTag("Player") && canvasUI.GetComponent<TextMeshPro>().text == "")
         {
-            canvasUI.GetComponent<TextMeshPro>().text = "Press A to open/close the door";
+            canvasUI.GetComponent<TextMeshPro>().text = "Press '1' to open/close the door";
             Debug.Log("Player entered the door trigger area.");
         }
         if (other.CompareTag("Player") && canvasUI.GetComponent<TextMeshPro>().text == "")
         {
-            canvasUI.GetComponent<TextMeshPro>().text = "Press A to open/close the door";
+            canvasUI.GetComponent<TextMeshPro>().text = "Press '1' to open/close the door";
         }
     }
 }

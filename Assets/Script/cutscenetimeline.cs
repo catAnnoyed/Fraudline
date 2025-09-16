@@ -87,7 +87,6 @@ public class cutscenetimeline : MonoBehaviour
     {
         aim.SetActive(true);
         playerController.enabled = true;
-        arrow.SetActive(true);
 
         if (GlobalInventoryManagerScript.Instance.opened[1])
         {
