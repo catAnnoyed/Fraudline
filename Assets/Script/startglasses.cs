@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class startglasses : MonoBehaviour
 {
     public LineRenderer line;
+    public bool played = false;
     public float rayDistance = 5f;
     public GameObject target;
     public GameObject buttoncollider;
@@ -49,6 +50,11 @@ public class startglasses : MonoBehaviour
             target = hit.collider.gameObject;
             if (target.CompareTag("button"))
             {
+                if (!played)
+                {
+                    gameObject.GetComponent<AudioSource>().Play();
+                    played = true;
+                }
                 line.startColor = Color.green;
                 line.endColor = Color.green;
                 StartButton.color = Color.gray;
@@ -78,10 +84,11 @@ public class startglasses : MonoBehaviour
         else
         {
             StartButton.color = Color.white;
-                
+
 
             line.startColor = Color.red;
             line.endColor = Color.red;
+            played = false;
 
         }
     }
