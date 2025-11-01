@@ -217,7 +217,7 @@ public class analysetool : MonoBehaviour
                 }
                 if (hit.collider.gameObject.name == "credentials")
                 {
-                    Renderer rend = credentials.GetComponent<Renderer>();
+                    Renderer rend = hit.collider.gameObject.GetComponent<Renderer>();
                     Color col = rend.material.color;   // get the color
                     col.a = 0.5f;                      // change the alpha
                     rend.material.color = col;         // assign it back
@@ -226,7 +226,7 @@ public class analysetool : MonoBehaviour
                 }
                 if (hit.collider.gameObject.name == "fakeinvoice")
                 {
-                    Renderer rend = fakeinvoice.GetComponent<Renderer>();
+                    Renderer rend = hit.collider.gameObject.GetComponent<Renderer>();
                     Color col = rend.material.color;   // get the color
                     col.a = 0.5f;                      // change the alpha
                     rend.material.color = col;         // assign it back
