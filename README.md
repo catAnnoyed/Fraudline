@@ -51,9 +51,9 @@ Our team advanced to the **Final Round** and presented the game to a large audie
 
   <!-- Row 1: two portrait photos -->
 <div style="display:flex; justify-content:center; align-items:center; gap:14px; flex-wrap:nowrap;">
-  <img src="Images/1.jpeg" alt="Development photo 1" style="height:500px; border-radius:10px; object-fit:cover;">
-  <img src="Images/2.jpeg" alt="Development photo 2" style="height:500px; border-radius:10px; object-fit:cover;">
-  <img src="Images/3.jpeg" alt="Development photo 3" style="height:500px; border-radius:10px; object-fit:cover;">
+  <img src="Images/1.jpeg" alt="Development photo 1" style="width:33%px; border-radius:10px; object-fit:cover;">
+  <img src="Images/2.jpeg" alt="Development photo 2" style="width:33%px; border-radius:10px; object-fit:cover;">
+  <img src="Images/3.jpeg" alt="Development photo 3" style="width:33%px; border-radius:10px; object-fit:cover;">
 </div>
 
   <!-- Row 2: one landscape -->
